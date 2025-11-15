@@ -15,7 +15,7 @@
 /* COVER IMAGE */
 .garage-cover {
 	width: 100%;
-	height: 40vh;
+	max-height: 40vh;
 	object-fit: cover;
 	display: block;
 }
