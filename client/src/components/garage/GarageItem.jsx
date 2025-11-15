@@ -16,7 +16,10 @@ export default function GarageItem() {
 
                 <p className={styles["garage-last"]}>Last added: BMW M4 Competition</p>
 
-                <button className={styles["garage-btn"]}>View Garage</button>
+                <div className={styles["garage-btn-group"]}>
+                    <button className={styles["garage-btn"]}>View Garage</button>
+                    <button className={styles["garage-btn"]}>Like Garage</button>
+                </div>
             </div>
         </div>
     );

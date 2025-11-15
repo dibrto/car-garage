@@ -59,8 +59,14 @@
 }
 
 /* BUTTON */
+.garage-btn-group {
+	display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
 .garage-btn {
-	width: 30%;
+	width: 35%;
 	padding: 10px 0;
 	background: #1e57ff;
 	color: white;
