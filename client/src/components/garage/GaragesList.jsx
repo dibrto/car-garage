@@ -1,8 +1,9 @@
 import { Link } from "react-router";
+import styles from "./GaragesList.module.css"
 
-export default function Home(){
+export default function GarageList() {
     return (
-         <>
+        <>
             <nav className="block py-4 w-full max-w-full rounded-none px-4 bg-transparent text-white shadow-none absolute z-50 border-0">
                 <div className="container mx-auto flex items-center justify-between">
                     <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-inherit">Car garage</h6>
@@ -26,16 +27,28 @@ export default function Home(){
                     </div>
                 </div> */}
             </nav>
-            <div className="relative min-h-screen w-full bg-cover bg-no-repeat" style={{backgroundImage: "url('https://bucket.material-tailwind.com/magic-ai/5047c695d8e41617b4b59ad104f0d925a2909e00b1822c20328b992a99c86022.jpg')"}}>
+
                 <div className="absolute inset-0 h-full w-full bg-gray-900/70"></div>
-                <div className="grid min-h-screen px-8">
-                    <div className="container relative my-auto mx-auto grid place-items-center text-center">
-                        <h1 className="block antialiased tracking-normal font-sans font-semibold text-white text-3xl !leading-snug md:max-w-full lg:max-w-3xl lg:text-5xl">My garage</h1>
-                        <p className="block antialiased font-sans text-xl font-normal leading-relaxed text-white mt-2 mb-14 w-full max-w-3xl lg:mb-10">Manage and customize your personal collection of cars in one place. Add vehicles, explore detailed specs, and build your own digital garage with ease.</p>
-                        <div><button className="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-white text-blue-gray-900 shadow-md shadow-blue-gray-500/10 hover:shadow-lg hover:shadow-blue-gray-500/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button">Register now</button></div>
-                    </div>
-                </div>
-            </div>
+
+                <div className={styles["garage-grid"]}>
+                    <div className={styles["garage-card"]}>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Audi_A8_D5_%282021%29_1X7A6342.jpg" className={styles["garage-cover"]} />
+
+                        <div className={styles["garage-content"]}>
+                            <div className={styles["garage-user"]}>
+                                <img src="https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg" className={styles["garage-avatar"]} />
+                                <div>
+                                    <h3 className={styles["garage-username"]}>Daniel Bratov</h3>
+                                    <p className={styles["garage-count"]}>7 cars in garage</p>
+                                </div>
+                            </div>
+
+                            <p className={styles["garage-last"]}>Last added: BMW M4 Competition</p>
+
+                            <button className={styles["garage-btn"]}>View Garage</button>
+                        </div>
+                    </div>            
+                </div>            
         </>
     );
 };

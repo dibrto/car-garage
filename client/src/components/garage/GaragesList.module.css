@@ -1,0 +1,86 @@
+/* GRID LAYOUT */
+.garage-grid {
+	display: flex;
+	padding: 20px;
+    position: relative;
+    z-index: 5;
+    padding-top: 6rem;
+    justify-content: center;
+}
+
+/* CARD */
+.garage-card {
+	background: #fff;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+	transition: transform 0.2s ease;
+	cursor: pointer;
+}
+
+.garage-card:hover {
+	transform: translateY(-5px);
+}
+
+/* COVER IMAGE */
+.garage-cover {
+	width: 100%;
+	height: 40vh;
+	object-fit: cover;
+	display: block;
+}
+
+/* CONTENT */
+.garage-content {
+	padding: 16px;
+}
+
+/* USER SECTION */
+.garage-user {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.garage-avatar {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.garage-username {
+	margin: 0;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.garage-count {
+	margin: 0;
+	font-size: 14px;
+	color: #666;
+}
+
+/* LAST CAR */
+.garage-last {
+	margin: 14px 0;
+	font-size: 14px;
+	color: #555;
+}
+
+/* BUTTON */
+.garage-btn {
+	width: 30%;
+	padding: 10px 0;
+	background: #1e57ff;
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-size: 15px;
+	cursor: pointer;
+	transition: background 0.2s ease;
+}
+
+.garage-btn:hover {
+	background: #1644cc;
+}
