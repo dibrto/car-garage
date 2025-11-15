@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router"
 
 import Home from "./components/home/Home"
-import GarageList from "./components/garage/GaragesList"
+import GarageList from "./components/garage/GarageList"
 import Header from "./components/header/Header"
 
 export default function App() {

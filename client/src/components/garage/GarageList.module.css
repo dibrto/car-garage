@@ -1,0 +1,9 @@
+/* GRID LAYOUT */
+.garage-grid {
+	display: flex;
+	padding: 20px;
+    position: relative;
+    z-index: 5;
+    padding-top: 6rem;
+    justify-content: center;
+}
