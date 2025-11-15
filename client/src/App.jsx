@@ -2,13 +2,18 @@ import { Routes, Route } from "react-router"
 
 import Home from "./components/home/Home"
 import GarageList from "./components/garage/GaragesList"
+import Header from "./components/header/Header"
 
 export default function App() {
 
     return (
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/garages" element={<GarageList />} />
-        </Routes>
+        <>
+            <Header />
+
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/garages" element={<GarageList />} />
+            </Routes>
+        </>
     )
 }
