@@ -1,6 +1,8 @@
-export default function FetchData(endPoint, body, method = "GET"){
+export default function FetchData(endPoint, signal,  body, method = "GET"){
     const url = `http://localhost:3030/data/${endPoint}`;
-    let options = {};
+    let options = {
+        signal: signal
+    };
 
     if (method) {
         options.method = method;
@@ -24,5 +26,9 @@ export default function FetchData(endPoint, body, method = "GET"){
             console.log(result);            
             return result;
         })
-        .catch(err => alert(err.messsage));
+        .catch(err => {
+            if (err.name !== "AbortError") {
+                alert(err.message);
+            }
+        });
 }
