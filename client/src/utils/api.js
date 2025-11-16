@@ -19,8 +19,8 @@ export default function FetchData(endPoint, signal,  body, method = "GET"){
     return fetch(url, options)
         .then(response => {
             if (!response.ok) throw response.statusText;
-            
-            return response.json()
+                        
+            return response.json();
         })
         .catch(err => {
             if (err.name !== "AbortError") {

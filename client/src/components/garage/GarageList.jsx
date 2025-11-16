@@ -10,7 +10,7 @@ export default function GarageList() {
     useEffect(() => {
         // on mount
         const abortController = new AbortController();
-        FetchData("garages", abortController.signal)
+        FetchData("garages?load=author%3D_ownerId%3Ausers", abortController.signal)
             .then(result => setGarages(result));
         
         // on unmount

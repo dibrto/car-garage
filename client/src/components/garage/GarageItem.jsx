@@ -5,6 +5,7 @@ export default function GarageItem({garageData}){
         _id
         , _ownerId
         , garageCover
+        , author
     } = garageData;
 
     return (
@@ -13,9 +14,9 @@ export default function GarageItem({garageData}){
 
             <div className={styles["garage-content"]}>
                 <div className={styles["garage-user"]}>
-                    <img src="https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg" className={styles["garage-avatar"]} />
+                    <img src={author.profilePicture} alt={`${author.username} profile picture`} className={styles["garage-avatar"]} />
                     <div>
-                        <h3 className={styles["garage-username"]}>Daniel Bratov</h3>
+                        <h3 className={styles["garage-username"]}>{author.username}</h3>
                         <p className={styles["garage-count"]}>7 cars in garage</p>
                     </div>
                 </div>
