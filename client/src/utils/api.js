@@ -15,20 +15,17 @@ export default function FetchData(endPoint, signal,  body, method = "GET"){
 
         options.body = JSON.stringify(body);
     }
-
-    fetch(url, options)
+    
+    return fetch(url, options)
         .then(response => {
             if (!response.ok) throw response.statusText;
             
             return response.json()
         })
-        .then(result => {
-            console.log(result);            
-            return result;
-        })
         .catch(err => {
             if (err.name !== "AbortError") {
                 alert(err.message);
             }
-        });
+        })
+    ;
 }
