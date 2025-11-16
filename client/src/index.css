@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+:root, :root.light{ 
+    --blue_main: #0056b3;
+}
