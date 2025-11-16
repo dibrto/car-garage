@@ -6,7 +6,9 @@ export default function GarageItem({garageData}){
         , _ownerId
         , garageCover
         , author
+        , cars
     } = garageData;
+    const lastCar = cars.at(-1);
 
     return (
         <div className={styles["garage-card"]}>
@@ -17,11 +19,16 @@ export default function GarageItem({garageData}){
                     <img src={author.profilePicture} alt={`${author.username} profile picture`} className={styles["garage-avatar"]} />
                     <div>
                         <h3 className={styles["garage-username"]}>{author.username}</h3>
-                        <p className={styles["garage-count"]}>7 cars in garage</p>
+                        <p className={styles["garage-count"]}>{cars.length} cars in garage</p>
                     </div>
                 </div>
 
-                <p className={styles["garage-last"]}>Last added: BMW M4 Competition</p>
+                <p className={styles["garage-last"]}>Last added:
+                    { lastCar
+                      ? ` ${lastCar?.model_make_id} ${lastCar?.model_name}`
+                      : " - "
+                    }
+                </p>
 
                 <div className={styles["garage-btn-group"]}>
                     <button className={styles["garage-btn"]}>View Garage</button>

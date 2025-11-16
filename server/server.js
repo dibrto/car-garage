@@ -1353,17 +1353,28 @@
             "a1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6af": {
                 _id: "a1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6af",
                 _ownerId: "4c8e2d3a-0d76-4a8f-9e2f-8d4c6680b4c1",
-                garageCover: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Audi_A8_D5_%282021%29_1X7A6342.jpg"
+                garageCover: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Audi_A8_D5_%282021%29_1X7A6342.jpg",
+                cars: [
+                    {
+                        "model_id": "60984",
+                        "model_make_id": "Audi",
+                        "model_name": "A3",
+                        "model_trim": "1.8 TFSI Premium 2dr Convertible (1.8L 4cyl Turbo 6AM)",
+                        "model_year": "2015",
+                    }
+                ]
             },
             "b1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad": {
                 _id: "b1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad",
                 _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-                garageCover: "https://images.hgmsites.net/lrg/2020-dodge-challenger-srt-hellcat-rwd-angular-front-exterior-view_100812521_l.jpg"
+                garageCover: "https://images.hgmsites.net/lrg/2020-dodge-challenger-srt-hellcat-rwd-angular-front-exterior-view_100812521_l.jpg",
+                cars: []
             },
             "c1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad": {
                 _id: "c1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad",
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-                garageCover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJpp4LyKViliee9U0uP3R320YXBykhzz5ABA&s"
+                garageCover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJpp4LyKViliee9U0uP3R320YXBykhzz5ABA&s",
+                cars: []
             }
         }
     };
