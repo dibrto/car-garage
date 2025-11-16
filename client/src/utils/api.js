@@ -26,6 +26,8 @@ export default function FetchData(endPoint, signal,  body, method = "GET"){
             if (err.name !== "AbortError") {
                 alert(err.message);
             }
+
+            throw err;
         })
     ;
 }

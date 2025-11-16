@@ -11,7 +11,8 @@ export default function GarageList() {
         // on mount
         const abortController = new AbortController();
         FetchData("garages?load=author%3D_ownerId%3Ausers", abortController.signal)
-            .then(result => setGarages(result));
+            .then(result => setGarages(result))
+            .catch(() => {});
         
         // on unmount
         return () => abortController.abort();
@@ -21,7 +22,7 @@ export default function GarageList() {
     return (
         <>
             <div className="absolute min-h-full w-full bg-gray-900/70">
-                <div className={styles["garage-grid"]}>
+                <div className={styles["garage-grid"]}>                    
                     {garages.map(garage => <GarageItem key={garage._id} garageData={garage}/>)}
                 </div>
             </div>
