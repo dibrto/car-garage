@@ -1,9 +1,15 @@
 import styles from "./GarageItem.module.css"
 
-export default function GarageItem() {
+export default function GarageItem({garageData}){
+    const {
+        _id
+        , _ownerId
+        , garageCover
+    } = garageData;
+
     return (
         <div className={styles["garage-card"]}>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Audi_A8_D5_%282021%29_1X7A6342.jpg" className={styles["garage-cover"]} />
+            <img src={garageCover} className={styles["garage-cover"]} />
 
             <div className={styles["garage-content"]}>
                 <div className={styles["garage-user"]}>
