@@ -1,0 +1,81 @@
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 6rem;
+}
+
+/* PROFILE SECTION */
+.profileCard {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 35px;
+    gap: 20px;
+}
+
+.avatar {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profileInfo h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.profileInfo p {
+    margin: 3px 0 0;
+    color: #666;
+}
+
+
+/* CARS GRID */
+.carsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 25px;
+}
+
+.carCard {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform .2s;
+}
+
+.carCard:hover {
+    transform: translateY(-4px);
+}
+
+.carImage {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+
+.carInfo {
+    padding: 20px;
+}
+
+.carInfo h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.3rem;
+}
+
+.specList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.specList li {
+    margin-bottom: 5px;
+    color: #444;
+}
