@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import styles from "./GarageItem.module.css"
 
 export default function GarageItem({garageData}){
@@ -31,8 +32,9 @@ export default function GarageItem({garageData}){
                 </p>
 
                 <div className={styles["garage-btn-group"]}>
-                    <button className={styles["garage-btn"]}>View Garage</button>
-                    <button className={styles["garage-btn"]}>Like Garage</button>
+                    <Link to={`/garages/${_id}/details`} className={styles["garage-btn"]}>View Garage</Link>
+                    {/* TODO: like for logged users */}
+                    {/* <button className={styles["garage-btn"]}>Like Garage</button> */}
                 </div>
             </div>
         </div>

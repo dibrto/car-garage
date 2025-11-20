@@ -12,7 +12,12 @@ export default function App() {
 
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/garages" element={<GarageList />} />
+
+                <Route path="garages" >
+                    <Route index element={<GarageList />} />
+                    <Route path=":garageId/details" element={<div>test</div>} />
+                </Route>
+
             </Routes>
         </>
     )
