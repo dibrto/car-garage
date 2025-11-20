@@ -1357,10 +1357,13 @@
                 cars: [
                     {
                         "model_id": "60984",
+                        "model_imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Audi_A8_D5_%282021%29_1X7A6342.jpg",
                         "model_make_id": "Audi",
                         "model_name": "A3",
                         "model_trim": "1.8 TFSI Premium 2dr Convertible (1.8L 4cyl Turbo 6AM)",
                         "model_year": "2015",
+                        "model_engine_power_ps": "170",
+                        "model_engine_fuel": "Premium Unleaded (Recommended)",
                     }
                 ]
             },

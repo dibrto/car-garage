@@ -1,61 +1,54 @@
+import { useEffect, useState } from "react";
 import styles from "./GarageDetails.module.css";
-
-    const user = {
-        name: "Daniel Bratov",
-        avatar: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg"
-    };
-
-    // --- HARDCODED CARS ---
-    const cars = [
-        {
-            id: 1,
-            brand: "Audi",
-            model: "A3",
-            year: 2022,
-            engine: "2.0 TFSI",
-            hp: 190,
-            fuel: "Petrol",
-            image: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Audi_A8_D5_%282021%29_1X7A6342.jpg"
-        },
-    ]
+import FetchData from "../../utils/api";
+import { useParams } from "react-router";
 
 export default function GarageDetails(/*{ user, cars }*/) {
+    const {garageId} = useParams();
+    const [data, setData] = useState({author: {}, cars: []});
+
+    useEffect(() => {
+        FetchData(`garages/${garageId}?load=author%3D_ownerId%3Ausers`)
+            .then(setData);
+
+        }, [garageId]);
+        
     return (
 
         <div className="absolute min-h-full w-full bg-gray-900/70">
-            <div className={styles.container}>            
+            <div className={styles.container}>
                 {/* PROFILE HEADER */}
                 <div className={styles.profileCard}>
                     <img 
                         className={styles.avatar} 
-                        src={user.avatar || "/default-profile.png"} 
-                        alt="avatar" 
+                        src={data.author.profilePicture}
+                        alt={`${data.author.username} profile picture`}
                     />
 
                     <div className={styles.profileInfo}>
-                        <h2>{user.name}</h2>
-                        <p>{cars.length} cars in garage</p>
+                        <h2>{data.author.username}</h2>
+                        <p>{data.cars.length} cars in garage</p>
                     </div>
                 </div>
 
                 {/* CARS SECTION */}
                 <div className={styles.carsGrid}>
-                    {cars.map((car) => (
-                        <div key={car.id} className={styles.carCard}>
+                    {data.cars.map((car) => (
+                        <div key={car.model_id} className={styles.carCard}>
                             <img 
-                                src={car.image} 
-                                alt={car.model}
+                                src={car.model_imageUrl}
+                                alt={car.model_make_id}
                                 className={styles.carImage}
                             />
 
                             <div className={styles.carInfo}>
-                                <h3>{car.brand} {car.model}</h3>
+                                <h3>{car.model_make_id} {car.model_name}</h3>
 
                                 <ul className={styles.specList}>
-                                    <li><strong>Year:</strong> {car.year}</li>
-                                    <li><strong>Engine:</strong> {car.engine}</li>
-                                    <li><strong>Power:</strong> {car.hp} HP</li>
-                                    <li><strong>Fuel:</strong> {car.fuel}</li>
+                                    <li><strong>Year:</strong> {car.model_year}</li>
+                                    <li><strong>Trim:</strong> {car.model_trim}</li>
+                                    <li><strong>Power:</strong> {car.model_engine_power_ps} HP</li>
+                                    <li><strong>Fuel:</strong> {car.model_engine_fuel}</li>
                                 </ul>
 
                             </div>
