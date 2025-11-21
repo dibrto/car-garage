@@ -4,8 +4,8 @@ import Header from "./components/header/Header"
 import Home from "./components/home/Home"
 import GarageList from "./components/garage_list/GarageList"
 import GarageDetails from "./components/garage_details/GarageDetails"
-import Login from "./components/login/Login"
-import Register from "./components/register/Register"
+import Login from "./components/auth/Login"
+import Register from "./components/auth/Register"
 
 export default function App() {
 

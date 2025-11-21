@@ -1,4 +1,5 @@
-import styles from "./Login.module.css";
+import { Link } from "react-router";
+import styles from "./AuthForm.module.css";
 
 export default function Login(){
     return (
@@ -52,9 +53,7 @@ export default function Login(){
 
                     <p className={styles.footerText}>
                     Don&apos;t have an account?{" "}
-                    <a href="/register" className={styles.link}>
-                        Register
-                    </a>
+                    <Link to="/register" className={styles.link}>Register</Link>
                     </p>
                 </div>
             </div>
