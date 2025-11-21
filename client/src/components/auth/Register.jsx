@@ -18,6 +18,7 @@ export default function Register(){
                     className={styles.input}
                     placeholder="you@example.com"
                     required
+                    autoComplete="email"
                     />
                 </label>
 
@@ -28,6 +29,7 @@ export default function Register(){
                     className={styles.input}
                     placeholder="••••••••"
                     required
+                    autoComplete="new-password"
                     />
                 </label>
 
@@ -38,6 +40,7 @@ export default function Register(){
                     className={styles.input}
                     placeholder="••••••••"
                     required
+                    autoComplete="re-password"
                     />
                 </label>
 
