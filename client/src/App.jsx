@@ -4,6 +4,8 @@ import Header from "./components/header/Header"
 import Home from "./components/home/Home"
 import GarageList from "./components/garage_list/GarageList"
 import GarageDetails from "./components/garage_details/GarageDetails"
+import Login from "./components/login/Login"
+import Register from "./components/register/Register"
 
 export default function App() {
 
@@ -13,6 +15,9 @@ export default function App() {
             
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+
 
                 <Route path="garages" >
                     <Route index element={<GarageList />} />
