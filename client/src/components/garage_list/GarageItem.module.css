@@ -1,10 +1,11 @@
 /* CARD */
 .garage-card {
-	background: #fff;
-	border-radius: 12px;
+	background: var(--backgr_forms);
+	color: var(--text_main);
 	overflow: hidden;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 	transition: transform 0.2s ease;
+	border-radius: 10px;
 }
 
 .garage-card:hover {
@@ -49,14 +50,12 @@
 .garage-count {
 	margin: 0;
 	font-size: 14px;
-	color: #666;
 }
 
 /* LAST CAR */
 .garage-last {
 	margin: 14px 0;
 	font-size: 14px;
-	color: #555;
 }
 
 /* BUTTON */
@@ -69,7 +68,7 @@
 .garage-btn {
 	width: 35%;
 	padding: 10px 0;
-	background: #1e57ff;
+	background: var(--gradient_btn);
 	color: white;
 	border: none;
 	border-radius: 8px;
@@ -80,5 +79,12 @@
 }
 
 .garage-btn:hover {
-	background: #1644cc;
+  filter: brightness(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+  transform: translateY(-1px);
+}
+
+.garage-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
 }
