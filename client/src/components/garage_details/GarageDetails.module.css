@@ -2,13 +2,16 @@
     max-width: 1200px;
     margin: auto;
     padding: 6rem;
+    position: relative;
+    z-index: 5;
 }
 
 /* PROFILE SECTION */
 .profileCard {
     display: flex;
     align-items: center;
-    background: white;
+    background: var(--backgr_forms);
+    color: var(--text_main);
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -31,7 +34,6 @@
 
 .profileInfo p {
     margin: 3px 0 0;
-    color: #666;
 }
 
 
@@ -43,11 +45,14 @@
 }
 
 .carCard {
-    background: white;
+    background: var(--backgr_forms);
+    color: var(--text_main);
     border-radius: 15px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     overflow: hidden;
     transition: transform .2s;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
 }
 
 .carCard:hover {
@@ -76,7 +81,6 @@
 
 .specList li {
     margin-bottom: 5px;
-    color: #444;
 }
 
 /* ------------------------------------------------------
