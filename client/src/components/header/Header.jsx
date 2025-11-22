@@ -17,7 +17,7 @@ export default function Header() {
                     <button
                         className="relative align-middle select-none font-sans font-medium text-center uppercase 
                                     transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
-                                    w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-white 
+                                    w-8 max-w-8 h-8 max-h-8 rounded-lg text-xs text-white 
                                     hover:bg-white/10 active:bg-white/30"
                         type="button"
                     >
@@ -29,7 +29,7 @@ export default function Header() {
                     <button
                         className="relative align-middle select-none font-sans font-medium text-center uppercase 
                                     transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
-                                    w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-white 
+                                    w-8 max-w-8 h-8 max-h-8 rounded-lg text-xs text-white 
                                     hover:bg-white/10 active:bg-white/30"
                         type="button"
                     >
@@ -41,7 +41,7 @@ export default function Header() {
                     <button
                         className="relative align-middle select-none font-sans font-medium text-center uppercase 
                                     transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
-                                    w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-white 
+                                    w-8 max-w-8 h-8 max-h-8 rounded-lg text-xs text-white 
                                     hover:bg-white/10 active:bg-white/30"
                         type="button"
                     >
@@ -54,7 +54,7 @@ export default function Header() {
                 <button type="button" onClick={() => setPhomeMenu(x => !x)}
                     className="relative align-middle select-none font-sans font-medium text-center uppercase 
                                 transition-all disabled:opacity-50 disabled:shadow-none
-                                w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-white 
+                                w-10 max-w-10 h-10 max-h-10 rounded-lg text-xs text-white 
                                 hover:bg-white/10 active:bg-white/30 ml-auto inline-block lg:hidden"
                    
                 >
@@ -91,7 +91,7 @@ export default function Header() {
                             <button
                                 className="relative align-middle select-none font-sans font-medium text-center uppercase 
                                         transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
-                                        w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs
+                                        w-8 max-w-8 h-8 max-h-8 rounded-lg text-xs
                                         hover:bg-white/10 active:bg-white/30"
                                 type="button"
                             >
@@ -103,7 +103,7 @@ export default function Header() {
                             <button
                                 className="relative align-middle select-none font-sans font-medium text-center uppercase 
                                         transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
-                                        w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs
+                                        w-8 max-w-8 h-8 max-h-8 rounded-lg text-xs
                                         hover:bg-white/10 active:bg-white/30"
                                 type="button"
                             >
@@ -115,7 +115,7 @@ export default function Header() {
                             <button
                                 className="relative align-middle select-none font-sans font-medium text-center uppercase 
                                         transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
-                                        w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs
+                                        w-8 max-w-8 h-8 max-h-8 rounded-lg text-xs
                                         hover:bg-white/10 active:bg-white/30"
                                 type="button"
                             >
