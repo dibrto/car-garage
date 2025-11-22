@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Navigation from "./Navigation";
+import { Link } from "react-router";
 
 export default function Header() {
     const [phoneMenu, setPhomeMenu] = useState(false);
@@ -14,7 +15,8 @@ export default function Header() {
                     <Navigation />
                 </ul>
                 <div className="hidden gap-2 lg:flex">
-                    <button
+                    <Link
+                        to={"https://www.facebook.com"} target="_blank" rel="noopener noreferrer"
                         className="relative align-middle select-none font-sans font-medium text-center uppercase 
                                     transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
                                     w-8 max-w-8 h-8 max-h-8 rounded-lg text-xs text-white 
@@ -24,9 +26,10 @@ export default function Header() {
                         <span className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
                             <i className="fa-brands fa-facebook text-base"></i>
                         </span>
-                    </button>
+                    </Link>
 
-                    <button
+                    <Link
+                        to={"https://www.instagram.com"} target="_blank" rel="noopener noreferrer"
                         className="relative align-middle select-none font-sans font-medium text-center uppercase 
                                     transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
                                     w-8 max-w-8 h-8 max-h-8 rounded-lg text-xs text-white 
@@ -36,9 +39,10 @@ export default function Header() {
                         <span className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
                             <i className="fa-brands fa-instagram text-base"></i>
                         </span>
-                    </button>
+                    </Link>
 
-                    <button
+                    <Link
+                        to={"https://github.com/dibrto/car-garage.git"} target="_blank" rel="noopener noreferrer"
                         className="relative align-middle select-none font-sans font-medium text-center uppercase 
                                     transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
                                     w-8 max-w-8 h-8 max-h-8 rounded-lg text-xs text-white 
@@ -48,7 +52,7 @@ export default function Header() {
                         <span className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
                             <i className="fa-brands fa-github text-base"></i>
                         </span>
-                    </button>
+                    </Link>
                 </div>
 
                 <button type="button" onClick={() => setPhomeMenu(x => !x)}
