@@ -25,16 +25,12 @@ export default function GarageList() {
 
 
     return (
-        <>
-            
+        <>            
             {/* {loading && <Loader />} */}
 
-            <div className="absolute min-h-full w-full bg-gray-900/70">
-                <div className={styles["garage-grid"]}>
-                    {garages.map(garage => <GarageItem key={garage._id} garageData={garage}/>)}
-                </div>
-            </div>
-            
+            <div className={styles["garage-grid"]}>
+                {garages.map(garage => <GarageItem key={garage._id} garageData={garage}/>)}
+            </div>            
         </>
     );
 };
