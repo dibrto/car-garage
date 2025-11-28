@@ -24,6 +24,7 @@ export function UserProvider({ children }) {
     };
 
     const logout = () => {
+        // TODO: server req
         setUser(null);
     };
 
