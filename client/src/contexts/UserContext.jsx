@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import useFetch from "../hooks/useFetch";
+import { useNavigate } from "react-router";
 
 const UserContext = createContext({
     user: {
@@ -17,10 +18,12 @@ const UserContext = createContext({
 export function UserProvider({ children }) {
     const [user, setUser] = useState(null);
     const { fetchData } = useFetch();
+    const navigate = useNavigate();
 
     const login = async (userData) => {
         const response = await fetchData("users/login", "POST", userData);
         setUser(response);
+        navigate("/");
     };
 
     const logout = () => {
