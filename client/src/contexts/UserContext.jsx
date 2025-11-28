@@ -22,8 +22,7 @@ export function UserProvider({ children }) {
     const navigate = useNavigate();
 
     const register = async (userData) => {
-        const { email, password } = userData;
-        const response = await fetchData("auth", "register", "POST", { email, password } );
+        const response = await fetchData("auth", "register", "POST", userData);
 
         if (!response) {
             return;

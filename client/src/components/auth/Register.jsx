@@ -13,7 +13,21 @@ export default function Register() {
     const { regField, data } = useForm(initVals);
     const { register } = useUser();
     
-    const submitHandler = () => register(data);
+    const submitHandler = () => {
+        const { email, password, rePassword } = data;
+
+        if (email === "" || password === "" || rePassword === ""){
+            alert("Fill all fields");
+            return;
+        }
+
+        if (password != rePassword){
+            alert("Passwords don't match");
+            return;
+        }
+
+        register({ email, password});
+    };
 
     return (
         <div className={styles.page}>
