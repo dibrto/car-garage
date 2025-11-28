@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import styles from "./AuthForm.module.css";
 import useForm from "../../hooks/useForm";
+import useFetch from "../../hooks/useFetch";
 
 const initVals = {
     email : "",
@@ -9,10 +10,11 @@ const initVals = {
 
 export default function Login() {
     const {data, regField} = useForm(initVals);
+    const { fetchData } = useFetch();
 
-    const submitHandler = () => {
-        console.log(data);
-        
+    const submitHandler = async () => {
+        const response = await fetchData("users/login", "POST", data);
+        console.log(response);        
     };
 
     return (
