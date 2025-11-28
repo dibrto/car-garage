@@ -1,17 +1,10 @@
-import { useEffect, useState } from "react";
 import styles from "./GarageDetails.module.css";
-import FetchData from "../../utils/api";
 import { useParams } from "react-router";
+import useFetch from "../../hooks/useFetch";
 
 export default function GarageDetails(/*{ user, cars }*/) {
     const { garageId } = useParams();
-    const [data, setData] = useState({ author: {}, cars: [] });
-
-    useEffect(() => {
-        FetchData(`garages/${garageId}?load=author%3D_ownerId%3Ausers`)
-            .then(setData);
-
-    }, [garageId]);
+    const { data } = useFetch("data", `garages/${garageId}?load=author%3D_ownerId%3Ausers`, { author: {}, cars: [] });
 
     return (
         <div className={styles.container}>
