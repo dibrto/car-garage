@@ -52,13 +52,12 @@ export default function Login() {
                     Remember me
                     </label> */}
 
-                        <button
+                        {/* <button
                             type="button"
                             className={styles.linkButton}
-                        // тук по-късно можеш да закачиш onClick
                         >
                             Forgot password?
-                        </button>
+                        </button> */}
                     </div>
 
                     <button type="submit" className={styles.submit}>

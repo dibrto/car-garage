@@ -1,20 +1,35 @@
 import { Link } from "react-router";
 import styles from "./AuthForm.module.css";
+import useForm from "../../hooks/useForm";
+
+const initVals = {
+    email : ""
+    , password: ""
+    , rePassword: ""
+}
 
 export default function Register() {
+    const { regField, data } = useForm(initVals);
+
+    const submitHandler = () => {
+        console.log(data);
+        
+    };
+
     return (
         <div className={styles.page}>
             <div className={styles.card}>
                 <h1 className={styles.title}>Register</h1>
                 <p className={styles.subtitle}>Sign up to create your own car garage</p>
 
-                <form className={styles.form}>
+                <form className={styles.form} action={submitHandler}>
                     <label className={styles.label}>
                         Email
                         <input
                             type="email"
                             className={styles.input}
                             placeholder="you@example.com"
+                            {...regField("email")}
                             required
                             autoComplete="email"
                         />
@@ -26,6 +41,7 @@ export default function Register() {
                             type="password"
                             className={styles.input}
                             placeholder="••••••••"
+                            {...regField("password")}
                             required
                             autoComplete="new-password"
                         />
@@ -37,6 +53,7 @@ export default function Register() {
                             type="password"
                             className={styles.input}
                             placeholder="••••••••"
+                            {...regField("rePassword")}
                             required
                             autoComplete="re-password"
                         />
