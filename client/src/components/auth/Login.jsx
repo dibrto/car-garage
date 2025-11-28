@@ -1,7 +1,8 @@
 import { Link } from "react-router";
+
 import styles from "./AuthForm.module.css";
 import useForm from "../../hooks/useForm";
-import useFetch from "../../hooks/useFetch";
+import useUser from "../../hooks/useUser";
 
 const initVals = {
     email : "",
@@ -10,12 +11,9 @@ const initVals = {
 
 export default function Login() {
     const {data, regField} = useForm(initVals);
-    const { fetchData } = useFetch();
+    const { login } = useUser();
 
-    const submitHandler = async () => {
-        const response = await fetchData("users/login", "POST", data);
-        console.log(response);        
-    };
+    const submitHandler = () => login(data);
 
     return (
         <div className={styles.page}>
