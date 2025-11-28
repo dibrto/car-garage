@@ -21,7 +21,7 @@ export function UserProvider({ children }) {
     const navigate = useNavigate();
 
     const login = async (userData) => {
-        const response = await fetchData("users/login", "POST", userData);
+        const response = await fetchData("auth", "login", "POST", userData);
 
         if (!response) {
             return;

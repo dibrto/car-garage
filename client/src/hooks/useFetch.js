@@ -1,7 +1,14 @@
-const BASE_URL = "http://localhost:3030/";
+const apis = {
+    auth: import.meta.env.VITE_API_AUTH_URL
+    , data: import.meta.env.VITE_API_DATA_URL
+};
 
 export default function useFetch(){
-    const fetchData = async  (endPoint, method, body) => {
+    console.log(apis.auth);
+    
+    const fetchData = async (api, endPoint, method, body) => {
+        const fetchUrl = apis[api] + endPoint;
+
         let options = {};
 
         if (method) {
@@ -17,7 +24,7 @@ export default function useFetch(){
         }
 
         try {
-            const response = await fetch(BASE_URL + endPoint, options);
+            const response = await fetch(fetchUrl, options);
 
             if (!response.ok){
                 throw await response.json();
