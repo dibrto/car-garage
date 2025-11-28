@@ -11,6 +11,7 @@ const UserContext = createContext({
         , _id: ""
     }
     , isAuthenticated: false
+    , register() {}
     , login() {}
     , logout () {}
 });
@@ -19,6 +20,18 @@ export function UserProvider({ children }) {
     const [user, setUser] = useState(null);
     const { fetchData } = useFetch();
     const navigate = useNavigate();
+
+    const register = async (userData) => {
+        const { email, password } = userData;
+        const response = await fetchData("auth", "register", "POST", { email, password } );
+
+        if (!response) {
+            return;
+        }
+
+        setUser(response);
+        navigate("/");
+    }
 
     const login = async (userData) => {
         const response = await fetchData("auth", "login", "POST", userData);
@@ -40,7 +53,7 @@ export function UserProvider({ children }) {
     const isAuthenticated = !!user;
 
     return (
-        <UserContext.Provider value={{ user, login, logout, isAuthenticated }}>
+        <UserContext.Provider value={{ user, register, login, logout, isAuthenticated }}>
             {children}
         </UserContext.Provider>
     );

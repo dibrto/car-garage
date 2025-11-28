@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import styles from "./AuthForm.module.css";
 import useForm from "../../hooks/useForm";
+import useUser from "../../hooks/useUser";
 
 const initVals = {
     email : ""
@@ -10,11 +11,9 @@ const initVals = {
 
 export default function Register() {
     const { regField, data } = useForm(initVals);
-
-    const submitHandler = () => {
-        console.log(data);
-        
-    };
+    const { register } = useUser();
+    
+    const submitHandler = () => register(data);
 
     return (
         <div className={styles.page}>
