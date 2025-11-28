@@ -25,8 +25,9 @@ export default function useFetch(){
 
             return response.json();
         }
-        catch(err) {            
+        catch(err) {
             alert(err.message);
+            return null;
         }
     };
 

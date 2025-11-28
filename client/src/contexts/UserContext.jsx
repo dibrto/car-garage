@@ -22,6 +22,11 @@ export function UserProvider({ children }) {
 
     const login = async (userData) => {
         const response = await fetchData("users/login", "POST", userData);
+
+        if (!response) {
+            return;
+        }
+
         setUser(response);
         navigate("/");
     };
