@@ -29,7 +29,7 @@ export function UserProvider({ children }) {
         }
 
         setUser(response);
-        navigate("/");
+        navigate("/garages");
     }
 
     const login = async (userData) => {
@@ -40,7 +40,7 @@ export function UserProvider({ children }) {
         }
 
         setUser(response);
-        navigate("/");
+        navigate("/garages");
     };
 
     const logout = () => {
