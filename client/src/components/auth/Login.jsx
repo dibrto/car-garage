@@ -1,22 +1,36 @@
 import { Link } from "react-router";
 import styles from "./AuthForm.module.css";
+import useForm from "../../hooks/useForm";
+
+const initVals = {
+    email : "",
+    password: ""
+}
 
 export default function Login() {
+    const {data, regField} = useForm(initVals);
+
+    const submitHandler = () => {
+        console.log(data);
+        
+    };
+
     return (
         <div className={styles.page}>
             <div className={styles.card}>
                 <h1 className={styles.title}>Login</h1>
                 <p className={styles.subtitle}>Sign in to your car garage</p>
 
-                <form className={styles.form}>
+                <form className={styles.form} action={submitHandler}>
                     <label className={styles.label}>
                         Email
                         <input
                             type="email"
                             className={styles.input}
+                            {...regField("email")}
+                            autoComplete="email"
                             placeholder="you@example.com"
                             required
-                            autoComplete="email"
                         />
                     </label>
 
@@ -25,9 +39,10 @@ export default function Login() {
                         <input
                             type="password"
                             className={styles.input}
+                            {...regField("password")}
+                            autoComplete="current-password"
                             placeholder="••••••••"
                             required
-                            autoComplete="current-password"
                         />
                     </label>
 
