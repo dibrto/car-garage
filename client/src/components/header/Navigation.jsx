@@ -17,7 +17,9 @@ export default function Navigation(){
                     </>
                 )
                 : (
-                    <></>
+                    <>
+                        <li><Link to="/logout" className="block antialiased font-sans text-sm leading-normal text-inherit font-medium">Logout</Link></li>
+                    </>
                 )
             }
         </>
