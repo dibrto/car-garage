@@ -1,11 +1,23 @@
+import { useEffect, useState } from "react";
+
 const apis = {
     auth: import.meta.env.VITE_API_AUTH_URL
     , data: import.meta.env.VITE_API_DATA_URL
 };
 
-export default function useFetch(){
-    console.log(apis.auth);
-    
+export default function useFetch(api, endPoint, initialState){
+    const [data, setData] = useState(initialState);
+
+    // TODO: add abort controller
+    // comp mount exec
+    useEffect(() => {
+        if (!api || !endPoint) return;
+
+        fetchData(api, endPoint)
+            .then(result =>setData(result))
+    }, [api, endPoint]);
+
+    // calls fetch
     const fetchData = async (api, endPoint, method, body) => {
         const fetchUrl = apis[api] + endPoint;
 
@@ -38,5 +50,5 @@ export default function useFetch(){
         }
     };
 
-    return { fetchData };
+    return { data, fetchData };
 }
