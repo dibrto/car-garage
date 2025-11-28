@@ -37,13 +37,17 @@ export function UserProvider({ children }) {
     }
 
     const login = async (userData) => {
-        const response = await fetchData("auth", "login", "POST", userData);
+        const userInfo = await fetchData("auth", "login", "POST", userData);
 
-        if (!response) {
+        if (!userInfo) {
             return;
         }
 
-        setUser(response);
+        // get own garage id
+        const garageInfo = await fetchData("data", "/garages?where=_ownerId%3D%224c8e2d3a-0d76-4a8f-9e2f-8d4c6680b4c1%22");      
+        userInfo._garageId = garageInfo.at(0)._id;
+
+        setUser(userInfo);
         navigate("/garages");
     };
 
