@@ -13,7 +13,16 @@ export default function Login() {
     const {data, regField} = useForm(initVals);
     const { login } = useUser();
 
-    const submitHandler = () => login(data);
+    const submitHandler = () => {
+        const { email, password } = data;
+
+        if (email === "" || password === ""){
+            alert("Fill all fields");
+            return;
+        }
+
+        login(data);
+    }
 
     return (
         <div className={styles.page}>
