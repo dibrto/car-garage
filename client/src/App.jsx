@@ -7,6 +7,7 @@ import Register from "./components/auth/Register"
 import Logout from "./components/auth/Logout"
 import GarageList from "./components/garage_list/GarageList"
 import GarageDetails from "./components/garage_details/GarageDetails"
+import GarageCarForm from "./components/garage_car_form/GarageCarForm"
 
 export default function App() {
 
@@ -27,6 +28,7 @@ export default function App() {
                     <Route path="garages" >
                         <Route index element={<GarageList />} />
                         <Route path=":garageId/details" element={<GarageDetails />} />
+                        <Route path=":garageId/create" element={<GarageCarForm />} />
                     </Route>
 
                 </Routes>
