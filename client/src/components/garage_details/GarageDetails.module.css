@@ -46,8 +46,6 @@
     backdrop-filter: blur(6px);
     cursor: pointer;
     transition: 0.25s ease;
-    align-items: center;
-    display: flex;
 }
 
 .edit-profile-btn:hover {
