@@ -2,11 +2,11 @@ import { Routes, Route } from "react-router"
 
 import Header from "./components/header/Header"
 import Home from "./components/home/Home"
-import GarageList from "./components/garage_list/GarageList"
-import GarageDetails from "./components/garage_details/GarageDetails"
 import Login from "./components/auth/Login"
 import Register from "./components/auth/Register"
 import Logout from "./components/auth/Logout"
+import GarageList from "./components/garage_list/GarageList"
+import GarageDetails from "./components/garage_details/GarageDetails"
 
 export default function App() {
 
@@ -19,15 +19,15 @@ export default function App() {
 
                 <Routes>
                     <Route path="/" element={<Home />} />
+
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/logout" element={<Logout />} />
+
                     <Route path="garages" >
                         <Route index element={<GarageList />} />
                         <Route path=":garageId/details" element={<GarageDetails />} />
                     </Route>
-
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-
-                    <Route path="/logout" element={<Logout />} />
 
                 </Routes>
             </div>
