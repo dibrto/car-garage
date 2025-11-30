@@ -1,5 +1,5 @@
 import styles from "./GarageDetails.module.css";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import useFetch from "../../hooks/useFetch";
 import useUser from "../../hooks/useUser";
 
@@ -21,7 +21,7 @@ export default function GarageDetails(/*{ user, cars }*/) {
                 <div className={styles["profile-info"]}>
                     <div className="flex gap-5">
                         <h2>{data.author.username}</h2>
-                        { user?._garageId === garageId && <button className={styles["edit-profile-btn"]}>Edit profile</button> }
+                        { user?._garageId === garageId && <Link className={styles["edit-profile-btn"]}>Edit profile</Link> }
                     </div>
                     <p>{data.cars.length} cars in garage</p>
                 </div>
