@@ -51,14 +51,14 @@
 }
 
 .edit-profile-btn:hover {
-    background: rgba(255, 255, 255, 0.18);
-    border-color: rgba(255, 255, 255, 0.25);
+    background: var(--white_18pers);
+    border-color: var(--white_25pers);
     transform: translateY(-1px);
 }
 
 .edit-profile-btn:active {
     transform: translateY(0px) scale(0.98);
-    background: rgba(255, 255, 255, 0.25);
+    background: var(--white_25pers);
 }
 
 
