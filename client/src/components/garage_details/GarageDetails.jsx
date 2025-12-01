@@ -42,6 +42,7 @@ export default function GarageDetails(/*{ user, cars }*/) {
                             src={car.model_imageUrl}
                             alt={car.model_make_id}
                             className={styles["car-image"]}
+                            onError={(e) => e.target.src = "https://www.motozite.com/assets/front/images/No-Image.jpg"}
                         />
 
                         <div className={styles["car-info"]}>
