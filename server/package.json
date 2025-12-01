@@ -1,0 +1,6 @@
+{
+    "name": "car_garage_server",
+    "scripts": {
+        "dev": "node server.js"
+    }
+}
