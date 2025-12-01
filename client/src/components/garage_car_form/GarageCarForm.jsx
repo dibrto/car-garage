@@ -13,6 +13,7 @@ const initVals = {
     , model_imageUrl : ""
 };
 
+// TODO: make request to car query api
 export default function GarageCarForm(){
     const { garageId } = useParams(); 
     const {data, regField} = useForm(initVals);
