@@ -27,7 +27,7 @@ export default function App() {
 
                     <Route path="garages" >
                         <Route index element={<GarageList />} />
-                        <Route path=":garageId/details" element={<GarageDetails />} />
+                        <Route path=":garageId" element={<GarageDetails />} />
                         <Route path=":garageId/create" element={<GarageCarForm />} />
                     </Route>
 

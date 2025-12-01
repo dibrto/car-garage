@@ -32,7 +32,7 @@ export default function GarageItem({garageData}){
                 </p>
 
                 <div className={styles["garage-btn-group"]}>
-                    <Link to={`/garages/${_id}/details`} className={styles["garage-btn"]}>View Garage</Link>
+                    <Link to={`/garages/${_id}`} className={styles["garage-btn"]}>View Garage</Link>
                     {/* TODO: like for logged users */}
                     {/* <button className={styles["garage-btn"]}>Like Garage</button> */}
                 </div>
