@@ -1,13 +1,32 @@
+import { useNavigate, useParams } from "react-router";
+import useFetch from "../../hooks/useFetch";
 import useForm from "../../hooks/useForm";
 import styles from "./GarageCarForm.module.css"
 
-const initVals = {};
+const initVals = {
+    model_make_id : ""
+    , model_name : ""
+    , model_trim : ""
+    , model_year : ""
+    , model_engine_power_ps : ""
+    , model_engine_fuel : ""
+    , model_imageUrl : ""
+};
 
 export default function GarageCarForm(){
+    const { garageId } = useParams(); 
     const {data, regField} = useForm(initVals);
+    const { fetchData } = useFetch();
+    const navigate = useNavigate();
 
-    const submitHandler = () => {
-        console.log(data);
+    const submitHandler = async () => {
+        const garage = await fetchData("data", `garages/${garageId}`);
+
+        garage.cars.push(data);
+
+        await fetchData("data", `garages/${garageId}`, "PUT", garage);
+
+        navigate(`/garages/${garageId}`);
     };
 
     return (
