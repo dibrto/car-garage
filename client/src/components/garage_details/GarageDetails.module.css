@@ -52,6 +52,8 @@
     cursor: pointer;
     transition: 0.25s ease;
     height: 50px;
+    display: flex;
+    align-items: center;
 }
 
 .edit-profile-btn:hover {

@@ -27,7 +27,7 @@ export default function GarageDetails(/*{ user, cars }*/) {
                         && (
                             <div className="flex gap-5">
                                 <button className={styles["edit-profile-btn"]}>Edit profile</button>
-                                <button className={styles["edit-profile-btn"]}>Create car</button>
+                                <Link to={`/garages/${garageId}/car/create`} className={styles["edit-profile-btn"]}>Create car</Link>
                             </div>
                         )
                     }
