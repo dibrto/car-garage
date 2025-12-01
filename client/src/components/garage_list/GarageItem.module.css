@@ -19,8 +19,8 @@
 	width: 100%;
 	/* max-height: 40vh; */
 	aspect-ratio: 16 / 9;
-	object-fit: cover;
-	object-position: center;
+	/* object-fit: cover;
+	object-position: center; */
 	display: block;
 }
 
