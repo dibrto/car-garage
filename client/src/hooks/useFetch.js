@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import useUser from "./useUser";
 
 const apis = {
     auth: import.meta.env.VITE_API_AUTH_URL
@@ -7,6 +8,7 @@ const apis = {
 
 export default function useFetch(api, endPoint, initialState){
     const [data, setData] = useState(initialState);
+    const { isAuthenticated, user } = useUser();
 
     // TODO: add abort controller
     // comp mount exec
@@ -21,18 +23,19 @@ export default function useFetch(api, endPoint, initialState){
     const fetchData = async (api, endPoint, method, body) => {
         const fetchUrl = apis[api] + endPoint;
 
-        let options = {};
+        let options = { headers: {} };
 
         if (method) {
             options.method = method;
         }
 
         if (body) {
-            options.headers = {
-                "Content-Type": "application/json",
-            };
-
+            options.headers["Content-Type"] = "application/json";
             options.body = JSON.stringify(body);
+        }
+
+        if (isAuthenticated){
+            options.headers["X-Authorization"] = user.accessToken;
         }
 
         try {
