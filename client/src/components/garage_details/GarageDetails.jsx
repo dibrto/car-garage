@@ -19,11 +19,18 @@ export default function GarageDetails(/*{ user, cars }*/) {
                 />
 
                 <div className={styles["profile-info"]}>
-                    <div className="flex gap-5">
+                    <div className="pb-5">
                         <h2>{data.author.username}</h2>
-                        { user?._garageId === garageId && <button className={styles["edit-profile-btn"]}>Edit profile</button> }
+                        <p>{data.cars.length} cars in garage</p>
                     </div>
-                    <p>{data.cars.length} cars in garage</p>
+                    { user?._garageId === garageId 
+                        && (
+                            <div className="flex gap-5">
+                                <button className={styles["edit-profile-btn"]}>Edit profile</button>
+                                <button className={styles["edit-profile-btn"]}>Create car</button>
+                            </div>
+                        )
+                    }
                 </div>
             </div>
 

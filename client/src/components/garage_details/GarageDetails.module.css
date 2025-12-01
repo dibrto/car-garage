@@ -26,6 +26,11 @@
     object-fit: cover;
 }
 
+.profile-info {
+    display: flex;
+    gap: 2rem;
+}
+
 .profile-info h2 {
     margin: 0;
     font-size: 1.8rem;
@@ -46,6 +51,7 @@
     backdrop-filter: blur(6px);
     cursor: pointer;
     transition: 0.25s ease;
+    height: 50px;
 }
 
 .edit-profile-btn:hover {
@@ -147,6 +153,10 @@
     .avatar {
         width: 90px;
         height: 90px;
+    }
+
+    .profile-info {
+        display: block;
     }
 
     .profile-info h2 {
