@@ -33,8 +33,8 @@ export default function GarageCarForm(){
     return (
         <div className={styles.page}>
             <div className={styles.card}>
-                <h1 className={styles.title}>Create car</h1>
-                <p className={styles.subtitle}>Create and add car to your garage</p>
+                <h1 className={styles.title}>Add car</h1>
+                <p className={styles.subtitle}>Create and add new car to your garage</p>
 
                 <form className={styles.form} action={submitHandler}>
                     <label className={styles.label}>
