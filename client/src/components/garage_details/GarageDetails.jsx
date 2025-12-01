@@ -54,6 +54,11 @@ export default function GarageDetails(/*{ user, cars }*/) {
                                 <li><strong>Fuel:</strong> {car.model_engine_fuel}</li>
                             </ul>
 
+                            <div className="flex gap-5">
+                                <Link className={styles["edit-profile-btn"]}>Edit car</Link>
+                                <Link to={`/garages/${garageId}/car/add`} className={styles["edit-profile-btn"]}>Delete car</Link>
+                            </div>
+
                         </div>
                     </div>
                 ))}

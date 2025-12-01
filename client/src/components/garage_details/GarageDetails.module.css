@@ -107,8 +107,8 @@
 
 .spec-list {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding-bottom: 1rem;
+    margin: 0;    
 }
 
 .spec-list li {
