@@ -5,8 +5,24 @@ import useUser from "../../hooks/useUser";
 
 export default function GarageDetails(/*{ user, cars }*/) {
     const { garageId } = useParams();
-    const { data } = useFetch("data", `garages/${garageId}?load=author%3D_ownerId%3Ausers`, { author: {}, cars: [] });
+    const { data, fetchData, setData } = useFetch("data", `garages/${garageId}?load=author%3D_ownerId%3Ausers`, { author: {}, cars: [] });
     const { user } = useUser();
+
+    const deleteCarHandler = async (carModelId) => {
+        const isConfirmed = confirm("Do you want to delete the car ?");
+
+        if (!isConfirmed) {
+            return;
+        }
+
+        const garage = await fetchData("data", `garages/${garageId}?load=author%3D_ownerId%3Ausers`);
+
+        garage.cars = garage.cars.filter(car => car.model_id !== carModelId);
+        
+        await fetchData("data", `garages/${garageId}`, "PATCH", {cars: garage.cars});
+
+        setData(garage);
+    };
 
     return (
         <div className={styles["container"]}>
@@ -57,7 +73,7 @@ export default function GarageDetails(/*{ user, cars }*/) {
 
                             <div className="flex gap-5">
                                 <Link className={styles["edit-profile-btn"]}>Edit car</Link>
-                                <Link to={`/garages/${garageId}/car/add`} className={styles["edit-profile-btn"]}>Delete car</Link>
+                                <button type="button" className={styles["edit-profile-btn"]} onClick={() => deleteCarHandler(car.model_id)}>Delete car</button>
                             </div>
 
                         </div>

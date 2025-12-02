@@ -53,5 +53,5 @@ export default function useFetch(api, endPoint, initialState){
         }
     };
 
-    return { data, fetchData };
+    return { data, setData, fetchData };
 }
