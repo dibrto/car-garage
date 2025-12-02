@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import useUser from "../../hooks/useUser";
 
 export default function Navigation(){
-    const { isAuthenticated } = useUser();
+    const { isAuthenticated, user } = useUser();
 
     return (
         <>
@@ -18,6 +18,7 @@ export default function Navigation(){
                 )
                 : (
                     <>
+                        <li><Link to={`/garages/${user._garageId}`} className="block antialiased font-sans text-sm leading-normal text-inherit font-medium">My garage</Link></li>
                         <li><Link to="/logout" className="block antialiased font-sans text-sm leading-normal text-inherit font-medium">Logout</Link></li>
                     </>
                 )
