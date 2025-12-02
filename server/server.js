@@ -1322,7 +1322,7 @@
             "4c8e2d3a-0d76-4a8f-9e2f-8d4c6680b4c1": {
                 email: "daniel.bratov@gmail.com",
     			username: "Daniel Bratov",
-    			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+    			hashedPassword: "f28055e298a10032da94713a421f2f73934ec9b936ceece2064b40fd8572cc06",                
                 profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg"
             },
     		"35c62d76-8152-4626-8712-eeb96381bea8": {
