@@ -72,7 +72,7 @@ export default function GarageDetails(/*{ user, cars }*/) {
                             </ul>
 
                             <div className="flex gap-5">
-                                <Link className={styles["edit-profile-btn"]}>Edit car</Link>
+                                <Link to={`/garages/${garageId}/car/${car.model_id}/edit`} className={styles["edit-profile-btn"]}>Edit car</Link>
                                 <button type="button" className={styles["edit-profile-btn"]} onClick={() => deleteCarHandler(car.model_id)}>Delete car</button>
                             </div>
 
