@@ -1,6 +1,7 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import useFetch from "../hooks/useFetch";
 import { useNavigate } from "react-router";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const UserContext = createContext({
     user: {
@@ -17,7 +18,7 @@ const UserContext = createContext({
 });
 
 export function UserProvider({ children }) {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useLocalStorage(null, "user");
     const { fetchData } = useFetch();
     const navigate = useNavigate();
 
@@ -45,7 +46,7 @@ export function UserProvider({ children }) {
 
         // get own garage id
         const garageInfo = await fetchData("data", "/garages?where=_ownerId%3D%224c8e2d3a-0d76-4a8f-9e2f-8d4c6680b4c1%22");      
-        userInfo._garageId = garageInfo.at(0)._id;
+        userInfo._garageId = garageInfo.at(0)._id;        
 
         setUser(userInfo);
         navigate("/garages");
