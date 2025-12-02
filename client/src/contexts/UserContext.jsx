@@ -28,10 +28,16 @@ export function UserProvider({ children }) {
         if (!userInfo) {
             return;
         }
-
-        // get own garage id
-        const garageInfo = await fetchData("data", `/garages?where=_ownerId%3D%22${userInfo._id}%22`);
-        userInfo._garageId = garageInfo.at(0)._id;
+        
+        // create own garage
+        const garageData = {
+            accessToken: userInfo.accessToken
+            , garageCover: ""
+            , _ownerId: userInfo._id
+            , cars: []
+        };
+        const garageInfo = await fetchData("data", "garages", "POST", garageData);
+        userInfo._garageId = garageInfo._id;
 
         setUser(userInfo);
         navigate("/garages");
@@ -44,7 +50,7 @@ export function UserProvider({ children }) {
             return;
         }
 
-        // get own garage id
+        // get own garage
         const garageInfo = await fetchData("data", `/garages?where=_ownerId%3D%22${userInfo._id}%22`);
         userInfo._garageId = garageInfo.at(0)._id;        
 
