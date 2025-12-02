@@ -14,7 +14,7 @@ export default function Register() {
     const { register } = useUser();
     
     const submitHandler = () => {
-        const { email, password, rePassword } = data;
+        const { email, password, rePassword, username } = data;
 
         if (email === "" || password === "" || rePassword === ""){
             alert("Fill all fields");
@@ -26,7 +26,9 @@ export default function Register() {
             return;
         }
 
-        register({ email, password});
+        const profilePicture = "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg";
+
+        register({ email, password, profilePicture, username });
     };
 
     return (
@@ -45,6 +47,18 @@ export default function Register() {
                             {...regField("email")}
                             required
                             autoComplete="email"
+                        />
+                    </label>
+
+                    <label className={styles.label}>
+                        Username
+                        <input
+                            type="text"
+                            className={styles.input}
+                            placeholder="John Doe"
+                            {...regField("username")}
+                            required
+                            autoComplete="username"
                         />
                     </label>
 
