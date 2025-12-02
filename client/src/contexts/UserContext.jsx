@@ -32,7 +32,7 @@ export function UserProvider({ children }) {
         // create own garage
         const garageData = {
             accessToken: userInfo.accessToken
-            , garageCover: ""
+            , garageCover: "https://www.motozite.com/assets/front/images/No-Image.jpg"
             , _ownerId: userInfo._id
             , cars: []
         };
