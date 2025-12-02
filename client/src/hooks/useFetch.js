@@ -21,8 +21,16 @@ export default function useFetch(api, endPoint, initialState){
         }
 
         if (body) {
-            options.headers["Content-Type"] = "application/json";
-            options.body = JSON.stringify(body);
+            // body appended token for auth requests
+            if (body.accessToken){
+                options.headers["X-Authorization"] = body.accessToken;
+                delete body.accessToken;
+            }
+
+            if (Object.keys(body).length !== 0){
+                options.headers["Content-Type"] = "application/json";
+                options.body = JSON.stringify(body);
+            }
         }
 
         if (isAuthenticated){
