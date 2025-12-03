@@ -42,7 +42,7 @@ export default function GarageDetails(/*{ user, cars }*/) {
                     { user?._garageId === garageId 
                         && (
                             <div className="flex gap-5">
-                                <button className={styles["edit-profile-btn"]}>Edit profile</button>
+                                {/* <button className={styles["edit-profile-btn"]}>Edit profile</button> */}
                                 <Link to={`/garages/${garageId}/car/add`} className={styles["edit-profile-btn"]}>Add car</Link>
                             </div>
                         )
