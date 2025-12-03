@@ -21,6 +21,7 @@ export default function Navigation(){
                 : (
                     <>
                         <li><NavLink to={`/garages/${user._garageId}`} end className={({isActive}) => isActive ? activeClass : baseClass}>My garage</NavLink></li>
+                        <li><NavLink to={`/garages/${user._garageId}/car/add`} end className={({isActive}) => isActive ? activeClass : baseClass}>Add car</NavLink></li>
                         <li><NavLink to="/logout" className={({isActive}) => isActive ? activeClass : baseClass}>Logout</NavLink></li>
                     </>
                 )
