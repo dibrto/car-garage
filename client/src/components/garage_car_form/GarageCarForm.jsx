@@ -5,13 +5,15 @@ import useForm from "../../hooks/useForm";
 import styles from "./GarageCarForm.module.css"
 
 const initVals = {
-    model_make_id : ""
+    // model_make_id : ""
+    model_imageUrl : ""
+    , model_year : ""
     , model_name : ""
     , model_trim : ""
-    , model_year : ""
-    , model_engine_power_ps : ""
-    , model_engine_fuel : ""
-    , model_imageUrl : ""
+    , make_display : ""
+    , make_country : ""
+    // , model_engine_power_ps : ""
+    // , model_engine_fuel : ""
 };
 
 // TODO: make request to car query api
@@ -66,7 +68,7 @@ export default function GarageCarForm(){
                 <form className={styles.form} action={!carId ? AddCarHandler : EditCarHandler}>
                     <label className={styles.label}>
                         Brand
-                        <input type="text" className={styles.input} {...regField("model_make_id")} required />
+                        <input type="text" className={styles.input} {...regField("make_display")} required />
                     </label>
 
                     <label className={styles.label}>
@@ -84,7 +86,7 @@ export default function GarageCarForm(){
                         <input type="text" className={styles.input} {...regField("model_year")} required />
                     </label>
 
-                    <label className={styles.label}>
+                    {/* <label className={styles.label}>
                         Horse power
                         <input type="text" className={styles.input} {...regField("model_engine_power_ps")} required />
                     </label>
@@ -92,6 +94,11 @@ export default function GarageCarForm(){
                     <label className={styles.label}>
                         Engine fuel
                         <input type="text" className={styles.input} {...regField("model_engine_fuel")} required />
+                    </label> */}
+
+                    <label className={styles.label}>
+                        Country
+                        <input type="text" className={styles.input} {...regField("make_country")} required />
                     </label>
 
                     <label className={styles.label}>
