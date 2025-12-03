@@ -1325,17 +1325,15 @@
             },
     		"35c62d76-8152-4626-8712-eeb96381bea8": {
     			email: "peter@abv.bg",    			
-    			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",                
+    			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
     		},
     		"847ec027-f659-4086-8032-5173e2f9c93a": {
     			email: "george@abv.bg",
-    			username: "George",
     			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
-                profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg"
     		},
     		"60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
     			email: "admin@abv.bg",    			
-    			hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302",                
+    			hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302",
     		}
     	},
     	sessions: {
@@ -1366,7 +1364,7 @@
                 _id: "b1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad",
                 _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
                 garageCover: "https://images.hgmsites.net/lrg/2020-dodge-challenger-srt-hellcat-rwd-angular-front-exterior-view_100812521_l.jpg",
-                username: "Admin",
+                username: "George",
                 profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
                 cars: []
             },
