@@ -4,8 +4,8 @@ import useUser from "../../hooks/useUser";
 export default function Navigation(){
     const { isAuthenticated, user } = useUser();
 
-    const baseClass = "block antialiased font-sans text-sm leading-normal text-inherit font-medium";
-    const activeClass = baseClass + " border-b border-gray py-1 px-4 rounded-lg";
+    const baseClass = "block antialiased font-sans text-sm leading-normal text-inherit font-medium py-1 px-4 hover:bg-white/10 rounded-lg";
+    const activeClass = baseClass + " border-b border-gray";
     return (
         <>
             <li><NavLink to="/" className={({isActive}) => isActive ? activeClass : baseClass}>Home</NavLink></li>
