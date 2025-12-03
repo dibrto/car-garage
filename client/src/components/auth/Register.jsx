@@ -26,9 +26,7 @@ export default function Register() {
             return;
         }
 
-        const profilePicture = "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg";
-
-        register({ email, password, profilePicture, username });
+        register({ email, password, username });
     };
 
     return (

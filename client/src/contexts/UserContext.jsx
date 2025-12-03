@@ -22,8 +22,8 @@ export function UserProvider({ children }) {
     const { fetchData } = useFetch();
     const navigate = useNavigate();
 
-    const register = async (userData) => {
-        const userInfo = await fetchData("auth", "register", "POST", userData);
+    const register = async ({email, password, username}) => {
+        const userInfo = await fetchData("auth", "register", "POST", {email, password});
 
         if (!userInfo) {
             return;
@@ -32,10 +32,13 @@ export function UserProvider({ children }) {
         // create own garage
         const garageData = {
             accessToken: userInfo.accessToken
-            , garageCover: "https://www.motozite.com/assets/front/images/No-Image.jpg"
             , _ownerId: userInfo._id
+            , garageCover: "https://www.motozite.com/assets/front/images/No-Image.jpg"
+            , username
+            , profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg"
             , cars: []
         };
+
         const garageInfo = await fetchData("data", "garages", "POST", garageData);
         userInfo._garageId = garageInfo._id;
 
@@ -52,7 +55,7 @@ export function UserProvider({ children }) {
 
         // get own garage
         const garageInfo = await fetchData("data", `/garages?where=_ownerId%3D%22${userInfo._id}%22`);
-        userInfo._garageId = garageInfo.at(0)._id;        
+        userInfo._garageId = garageInfo.at(0)._id;
 
         setUser(userInfo);
         navigate("/garages");
