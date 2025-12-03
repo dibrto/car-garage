@@ -9,7 +9,7 @@ export default function Navigation(){
     return (
         <>
             <li><NavLink to="/" className={({isActive}) => isActive ? activeClass : baseClass}>Home</NavLink></li>
-            <li><NavLink to="/garages" className={({isActive}) => isActive ? activeClass : baseClass}>Community garages</NavLink></li>
+            <li><NavLink to="/garages" end className={({isActive}) => isActive ? activeClass : baseClass}>Community garages</NavLink></li>
 
             { !isAuthenticated 
                 ? (
@@ -20,7 +20,7 @@ export default function Navigation(){
                 )
                 : (
                     <>
-                        <li><NavLink to={`/garages/${user._garageId}`} className={({isActive}) => isActive ? activeClass : baseClass}>My garage</NavLink></li>
+                        <li><NavLink to={`/garages/${user._garageId}`} end className={({isActive}) => isActive ? activeClass : baseClass}>My garage</NavLink></li>
                         <li><NavLink to="/logout" className={({isActive}) => isActive ? activeClass : baseClass}>Logout</NavLink></li>
                     </>
                 )
