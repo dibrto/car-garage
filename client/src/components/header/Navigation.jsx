@@ -1,25 +1,27 @@
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 import useUser from "../../hooks/useUser";
 
 export default function Navigation(){
     const { isAuthenticated, user } = useUser();
 
+    const baseClass = "block antialiased font-sans text-sm leading-normal text-inherit font-medium";
+    const activeClass = baseClass + " border-b border-gray py-1 px-4 rounded-lg";
     return (
         <>
-            <li><Link to="/" className="block antialiased font-sans text-sm leading-normal text-inherit font-medium">Home</Link></li>
-            <li><Link to="/garages" className="block antialiased font-sans text-sm leading-normal text-inherit font-medium">Community garages</Link></li>
+            <li><NavLink to="/" className={({isActive}) => isActive ? activeClass : baseClass}>Home</NavLink></li>
+            <li><NavLink to="/garages" className={({isActive}) => isActive ? activeClass : baseClass}>Community garages</NavLink></li>
 
             { !isAuthenticated 
                 ? (
                     <>
-                        <li><Link to="/login" className="block antialiased font-sans text-sm leading-normal text-inherit font-medium">Login</Link></li>
-                        <li><Link to="/register" className="block antialiased font-sans text-sm leading-normal text-inherit font-medium">Register</Link></li>
+                        <li><NavLink to="/login" className={({isActive}) => isActive ? activeClass : baseClass}>Login</NavLink></li>
+                        <li><NavLink to="/register" className={({isActive}) => isActive ? activeClass : baseClass}>Register</NavLink></li>
                     </>
                 )
                 : (
                     <>
-                        <li><Link to={`/garages/${user._garageId}`} className="block antialiased font-sans text-sm leading-normal text-inherit font-medium">My garage</Link></li>
-                        <li><Link to="/logout" className="block antialiased font-sans text-sm leading-normal text-inherit font-medium">Logout</Link></li>
+                        <li><NavLink to={`/garages/${user._garageId}`} className={({isActive}) => isActive ? activeClass : baseClass}>My garage</NavLink></li>
+                        <li><NavLink to="/logout" className={({isActive}) => isActive ? activeClass : baseClass}>Logout</NavLink></li>
                     </>
                 )
             }
