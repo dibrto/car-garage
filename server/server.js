@@ -1355,15 +1355,25 @@
                         "model_name": "A3",
                         "model_trim": "1.8 TFSI Premium 2dr Convertible (1.8L 4cyl Turbo 6AM)",
                         "model_year": "2015",
-                        "model_engine_power_ps": "170",
-                        "model_engine_fuel": "Premium Unleaded (Recommended)",
+                        "make_display": "Audi",
+                        "make_country": "USA"
+                    },
+                    {
+                        "model_id": "11459",
+                        "model_imageUrl": "https://www.jeffdambrosiochryslerjeepdodge.com/blogs/3502/wp-content/uploads/2024/07/dodge-viper.jpg",
+                        "model_make_id": "dodge",
+                        "model_name": "Viper",
+                        "model_trim": "SRT-10",
+                        "model_year": "2009",
+                        "make_display": "Dodge",
+                        "make_country": "USA"
                     }
                 ]
             },
             "b1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad": {
                 _id: "b1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad",
                 _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-                garageCover: "https://images.hgmsites.net/lrg/2020-dodge-challenger-srt-hellcat-rwd-angular-front-exterior-view_100812521_l.jpg",
+                garageCover: "https://img-ik.cars.co.za/news-site-za/images/2025/09/LemonGarage23.jpg?tr=h-347,w-617,q-80",
                 username: "George",
                 profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
                 cars: []
@@ -1371,7 +1381,7 @@
             "c1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad": {
                 _id: "c1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad",
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-                garageCover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJpp4LyKViliee9U0uP3R320YXBykhzz5ABA&s",
+                garageCover: "https://images.pexels.com/photos/5050535/pexels-photo-5050535.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 username: "Peter",
                 profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
                 cars: []

@@ -56,19 +56,20 @@ export default function GarageDetails(/*{ user, cars }*/) {
                     <div key={car.model_id} className={styles["car-card"]}>
                         <img
                             src={car.model_imageUrl}
-                            alt={car.model_make_id}
+                            alt={car.make_display}
                             className={styles["car-image"]}
                             onError={(e) => e.target.src = "https://www.motozite.com/assets/front/images/No-Image.jpg"}
                         />
 
                         <div className={styles["car-info"]}>
-                            <h3>{car.model_make_id} {car.model_name}</h3>
+                            <h3>{car.make_display} {car.model_name}</h3>
 
                             <ul className={styles["spec-list"]}>
                                 <li><strong>Year:</strong> {car.model_year}</li>
                                 <li><strong>Trim:</strong> {car.model_trim}</li>
-                                <li><strong>Power:</strong> {car.model_engine_power_ps} HP</li>
-                                <li><strong>Fuel:</strong> {car.model_engine_fuel}</li>
+                                <li><strong>Country:</strong> {car.make_country}</li>
+                                {/* <li><strong>Power:</strong> {car.model_engine_power_ps} HP</li>
+                                <li><strong>Fuel:</strong> {car.model_engine_fuel}</li> */}
                             </ul>
 
                             <div className="flex gap-5">
