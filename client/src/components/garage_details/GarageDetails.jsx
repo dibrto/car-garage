@@ -5,7 +5,7 @@ import useUser from "../../hooks/useUser";
 
 export default function GarageDetails(/*{ user, cars }*/) {
     const { garageId } = useParams();
-    const { data, fetchData, setData } = useFetch("data", `garages/${garageId}?load=author%3D_ownerId%3Ausers`, { author: {}, cars: [] });
+    const { data, fetchData, setData } = useFetch("data", `garages/${garageId}`, { author: {}, cars: [] });
     const { user } = useUser();
 
     const deleteCarHandler = async (carModelId) => {
@@ -15,7 +15,7 @@ export default function GarageDetails(/*{ user, cars }*/) {
             return;
         }
 
-        const garage = await fetchData("data", `garages/${garageId}?load=author%3D_ownerId%3Ausers`);
+        const garage = await fetchData("data", `garages/${garageId}`);
 
         garage.cars = garage.cars.filter(car => car.model_id !== carModelId);
         
@@ -30,13 +30,13 @@ export default function GarageDetails(/*{ user, cars }*/) {
             <div className={styles["profile-card"]}>
                 <img
                     className={styles["avatar"]}
-                    src={data.author.profilePicture}
-                    alt={`${data.author.username} profile picture`}
+                    src={data.profilePicture}
+                    alt={`${data.username} profile picture`}
                 />
 
                 <div className={styles["profile-info"]}>
                     <div className="pb-5">
-                        <h2>{data.author.username}</h2>
+                        <h2>{data.username}</h2>
                         <p>{data.cars.length} cars in garage</p>
                     </div>
                     { user?._garageId === garageId 

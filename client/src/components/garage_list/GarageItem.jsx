@@ -4,11 +4,13 @@ import styles from "./GarageItem.module.css"
 export default function GarageItem({garageData}){
     const {
         _id
-        , _ownerId
+        // , _ownerId
         , garageCover
-        , author
+        , username
+        , profilePicture
         , cars
     } = garageData;
+    
     const lastCar = cars.at(-1);
 
     return (
@@ -17,9 +19,9 @@ export default function GarageItem({garageData}){
 
             <div className={styles["garage-content"]}>
                 <div className={styles["garage-user"]}>
-                    <img src={author.profilePicture} alt={`${author.username} profile picture`} className={styles["garage-avatar"]} />
+                    <img src={profilePicture} alt={`${username} profile picture`} className={styles["garage-avatar"]} />
                     <div>
-                        <h3 className={styles["garage-username"]}>{author.username}</h3>
+                        <h3 className={styles["garage-username"]}>{username}</h3>
                         <p className={styles["garage-count"]}>{cars.length} cars in garage</p>
                     </div>
                 </div>
