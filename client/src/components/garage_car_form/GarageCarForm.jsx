@@ -18,23 +18,27 @@ const initVals = {
 
 // TODO: make request to car query api
 export default function GarageCarForm(){
-    const { garageId, carId } = useParams(); 
+    const { data: years } = useFetch("carQuery", "years", {});
+    const { garageId, carId } = useParams();
     const {data, setData, regField} = useForm(initVals);
     const { fetchData } = useFetch();
     const navigate = useNavigate();
 
-    // edit car 
-    useEffect(() => {
-        if (!carId) {
-            return;
-        }
+    console.log(years);
+    
 
-        fetchData("data", `garages/${garageId}`)
-            .then(response => {
-                const car = response.cars.find(c => c.model_id === carId);
-                setData(car);
-            });
-    }, [carId, fetchData, garageId, setData]);
+    // // edit car 
+    // useEffect(() => {
+    //     if (!carId) {
+    //         return;
+    //     }
+
+    //     fetchData("data", `garages/${garageId}`)
+    //         .then(response => {
+    //             const car = response.cars.find(c => c.model_id === carId);
+    //             setData(car);
+    //         });
+    // }, [carId, fetchData, garageId, setData]);
 
     // add car handler
     const AddCarHandler = async () => {

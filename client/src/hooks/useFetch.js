@@ -4,6 +4,7 @@ import useUser from "./useUser";
 const apis = {
     auth: import.meta.env.VITE_API_AUTH_URL
     , data: import.meta.env.VITE_API_DATA_URL
+    , carQuery: import.meta.env.VITE_API_CAR_QUERY_URL
 };
 
 export default function useFetch(api, endPoint, initialState){
