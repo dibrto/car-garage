@@ -16,7 +16,7 @@ export default function App() {
             <Header />
             
             <div className="relative min-h-screen w-full bg-cover bg-no-repeat" style={{backgroundImage: "url('https://bucket.material-tailwind.com/magic-ai/5047c695d8e41617b4b59ad104f0d925a2909e00b1822c20328b992a99c86022.jpg')"}}>
-                <div className="absolute min-h-full w-full bg-gray-900/70"></div>
+                <div className="absolute min-h-full w-full bg-gray-900/70">
 
                 <Routes>
                     <Route path="/" element={<Home />} />
@@ -33,6 +33,7 @@ export default function App() {
                     </Route>
 
                 </Routes>
+                </div>
             </div>
         </>
     )

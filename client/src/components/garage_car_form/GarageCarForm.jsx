@@ -56,59 +56,79 @@ export default function GarageCarForm(){
     };
 
     return (
-        <div className={styles.page}>
-            <div className={styles.card}>
-                <h1 className={styles.title}>{!carId ? "Add" : "Edit"} car</h1>
-                <p className={styles.subtitle}>
-                    { !carId 
-                        ? "Create and add new car to your garage"
-                        : "Edit selected car from your garage"
-                    }</p>
+          <div className="w-full max-w-4xl mx-auto mt-30 p-6 
+                        rounded-2xl bg-black/30 backdrop-blur-lg 
+                        border border-white/10 shadow-xl">
 
-                <form className={styles.form} action={!carId ? AddCarHandler : EditCarHandler}>
-                    <label className={styles.label}>
-                        Brand
-                        <input type="text" className={styles.input} {...regField("make_display")} required />
-                    </label>
+            <h2 className="text-center text-2xl font-semibold text-white mb-6">
+                Select a car
+            </h2>
 
-                    <label className={styles.label}>
-                        Model
-                        <input type="text" className={styles.input} {...regField("model_name")} required />
-                    </label>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
 
-                    <label className={styles.label}>
-                        Trim
-                        <input type="text" className={styles.input} {...regField("model_trim")} required />
-                    </label>
+                {/* Year */}
+                <div>
+                    <label className="block text-white/80 mb-1">Year</label>
+                    <select
+                        // value={year}
+                        // onChange={(e) => setYear(e.target.value)}
+                        className="w-full p-3 bg-white/10 text-white rounded-xl 
+                                   border border-white/10 focus:outline-none 
+                                   focus:ring-2 focus:ring-blue-500">
+                        <option value="">---</option>
+                        <option>2024</option>
+                        <option>2023</option>
+                        <option>2022</option>
+                    </select>
+                </div>
 
-                    <label className={styles.label}>
-                        Year
-                        <input type="text" className={styles.input} {...regField("model_year")} required />
-                    </label>
+                {/* Make */}
+                <div>
+                    <label className="block text-white/80 mb-1">Make</label>
+                    <select
+                        // value={make}
+                        // onChange={(e) => setMake(e.target.value)}
+                        className="w-full p-3 bg-white/10 text-white rounded-xl 
+                                   border border-white/10 focus:outline-none 
+                                   focus:ring-2 focus:ring-blue-500">
+                        <option value="">---</option>
+                        <option>Audi</option>
+                        <option>BMW</option>
+                        <option>Mercedes</option>
+                    </select>
+                </div>
 
-                    {/* <label className={styles.label}>
-                        Horse power
-                        <input type="text" className={styles.input} {...regField("model_engine_power_ps")} required />
-                    </label>
+                {/* Model */}
+                <div>
+                    <label className="block text-white/80 mb-1">Model</label>
+                    <select
+                        // value={model}
+                        // onChange={(e) => setModel(e.target.value)}
+                        className="w-full p-3 bg-white/10 text-white rounded-xl 
+                                   border border-white/10 focus:outline-none 
+                                   focus:ring-2 focus:ring-blue-500">
+                        <option value="">---</option>
+                        <option>A4</option>
+                        <option>A6</option>
+                    </select>
+                </div>
 
-                    <label className={styles.label}>
-                        Engine fuel
-                        <input type="text" className={styles.input} {...regField("model_engine_fuel")} required />
-                    </label> */}
-
-                    <label className={styles.label}>
-                        Country
-                        <input type="text" className={styles.input} {...regField("make_country")} required />
-                    </label>
-
-                    <label className={styles.label}>
-                        Image URL
-                        <input type="text" className={styles.input} {...regField("model_imageUrl")} required />
-                    </label>
-                   
-                    <button type="submit" className={styles.submit}>{!carId ? "Add" : "Edit"}</button>
-                </form>                
-            </div>
+                {/* Trim */}
+                <div>
+                    <label className="block text-white/80 mb-1">Trim</label>
+                    <select
+                        // value={trim}
+                        // onChange={(e) => setTrim(e.target.value)}
+                        className="w-full p-3 bg-white/10 text-white rounded-xl 
+                                   border border-white/10 focus:outline-none 
+                                   focus:ring-2 focus:ring-blue-500">
+                        <option value="">---</option>
+                        <option>Base</option>
+                        <option>Sport</option>
+                        <option>Premium</option>
+                    </select>
+                </div>
+            </div>                                
         </div>
     );
 };
