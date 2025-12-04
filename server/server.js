@@ -1352,12 +1352,31 @@
                         "model_id": "60984",
                         "model_imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Audi_A8_D5_%282021%29_1X7A6342.jpg",
                         "model_make_id": "Audi",
-                        "model_name": "A3",
-                        "model_trim": "1.8 TFSI Premium 2dr Convertible (1.8L 4cyl Turbo 6AM)",
-                        "model_year": "2015",
+                        "model_name": "A8",
+                        "model_trim": "3.0T quattro 4dr Sedan AWD (3.0L 6cyl S/C 8A)",
+                        "model_year": "2019",
                         "make_display": "Audi",
+                        "make_country": "Germany"
+                    },                    
+                    {
+                        "model_id": "82782",
+                        "model_imageUrl": "https://www.edmunds.com/assets/m/dodge/challenger/2021/oem/2021_dodge_challenger_coupe_rt-scat-pack-widebody_fq_oem_1_600.jpg",
+                        "model_year": "2022",
+                        "model_make_id": "Dodge",
+                        "model_name": "Challenger",
+                        "model_trim": "SRT 392 2dr Coupe (6.4L 8cyl 6M)",
+                        "make_display": "Dodge",
                         "make_country": "USA"
-                    },
+                    }
+                ]
+            },
+            "b1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad": {
+                _id: "b1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad",
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                garageCover: "https://img-ik.cars.co.za/news-site-za/images/2025/09/LemonGarage23.jpg?tr=h-347,w-617,q-80",
+                username: "George",
+                profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
+                cars: [
                     {
                         "model_id": "11459",
                         "model_imageUrl": "https://www.jeffdambrosiochryslerjeepdodge.com/blogs/3502/wp-content/uploads/2024/07/dodge-viper.jpg",
@@ -1370,21 +1389,24 @@
                     }
                 ]
             },
-            "b1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad": {
-                _id: "b1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad",
-                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-                garageCover: "https://img-ik.cars.co.za/news-site-za/images/2025/09/LemonGarage23.jpg?tr=h-347,w-617,q-80",
-                username: "George",
-                profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
-                cars: []
-            },
             "c1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad": {
                 _id: "c1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad",
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
                 garageCover: "https://images.pexels.com/photos/5050535/pexels-photo-5050535.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 username: "Peter",
                 profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
-                cars: []
+                cars: [
+                    {
+                        "model_id": "11459",
+                        "model_imageUrl": "https://www.jeffdambrosiochryslerjeepdodge.com/blogs/3502/wp-content/uploads/2024/07/dodge-viper.jpg",
+                        "model_make_id": "dodge",
+                        "model_name": "Viper",
+                        "model_trim": "SRT-10",
+                        "model_year": "2009",
+                        "make_display": "Dodge",
+                        "make_country": "USA"
+                    },
+                ]
             }
         }
     };
