@@ -1,8 +1,7 @@
-import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import useFetch from "../../hooks/useFetch";
 import useForm from "../../hooks/useForm";
-import styles from "./GarageCarForm.module.css"
+import YearDropdown from "./YearDropdown";
 
 const initVals = {
     year: ""
@@ -10,9 +9,8 @@ const initVals = {
 
 // TODO: make request to car query api
 export default function GarageCarForm(){
-    const { data: years, } = useFetch("carQuery", "years", { Years: {} });
     const { garageId, carId } = useParams();
-    const {data, setData, regField} = useForm(initVals);
+    const {data, regField} = useForm(initVals);
     const { fetchData } = useFetch();
     const navigate = useNavigate();    
 
@@ -48,33 +46,18 @@ export default function GarageCarForm(){
         navigate(`/garages/${garageId}`);
     };
 
-    const submitHandler = () => {
+    const submitHandler = (e) => {
+        e.preventDefault();
         console.log(data);
         
     };
-
-    let yearsOptions = [];
-    const minYear = Number(years.Years.min_year);
-    const maxYear = Number(years.Years.max_year);
-    for (let i = maxYear; i >= minYear; i--) {
-        yearsOptions.push(i);
-    }
                             
     return (
         <div className="w-full max-w-4xl mx-auto mt-30 p-6 rounded-2xl bg-black/30 backdrop-blur-lg border border-white/10 shadow-xl">
             <h2 className="text-center text-2xl font-semibold text-white mb-6">Select a car</h2>
-            <form action={submitHandler} className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                {/* Year */}
-                <div>
-                    <div className="block text-white/80 mb-1">Year</div>
-                    <select
-                        className="w-full p-3 bg-white/10 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        {...regField("year")}
-                    >
-                        <option value="">---</option>
-                        { yearsOptions.map(year => <option key={year} value={year}>{year}</option>) }                        
-                    </select> 
-                </div>
+            <form onSubmit={submitHandler} className="grid grid-cols-1 md:grid-cols-4 gap-6">
+
+                <YearDropdown regField={regField("year")} />
 
                 {/* Make */}
                 <div>
@@ -85,7 +68,7 @@ export default function GarageCarForm(){
                         className="w-full p-3 bg-white/10 text-white rounded-xl 
                                    border border-white/10 focus:outline-none 
                                    focus:ring-2 focus:ring-blue-500">
-                        <option value="">---</option>
+                        <option value="" className="text-black">---</option>
                         <option>Audi</option>
                         <option>BMW</option>
                         <option>Mercedes</option>
@@ -101,7 +84,7 @@ export default function GarageCarForm(){
                         className="w-full p-3 bg-white/10 text-white rounded-xl 
                                    border border-white/10 focus:outline-none 
                                    focus:ring-2 focus:ring-blue-500">
-                        <option value="">---</option>
+                        <option value="" className="text-black">---</option>
                         <option>A4</option>
                         <option>A6</option>
                     </select>
@@ -116,14 +99,14 @@ export default function GarageCarForm(){
                         className="w-full p-3 bg-white/10 text-white rounded-xl 
                                    border border-white/10 focus:outline-none 
                                    focus:ring-2 focus:ring-blue-500">
-                        <option value="">---</option>
+                        <option value="" className="text-black">---</option>
                         <option>Base</option>
                         <option>Sport</option>
                         <option>Premium</option>
                     </select>
                 </div>
 
-                <button className="bg-amber-50">Submit</button>
+                <button type="submit" className="bg-amber-50">Submit</button>
             </form>
 
         </div>
