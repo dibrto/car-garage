@@ -12,7 +12,7 @@ export default function YearDropdown({ regField }){
 
     return (
         <div>
-            <div className="block text-white/80 mb-1">Year</div>
+            <div className="block text-white mb-1">Year</div>
             <select
                 className="w-full p-3 bg-white/10 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
                 {...regField}

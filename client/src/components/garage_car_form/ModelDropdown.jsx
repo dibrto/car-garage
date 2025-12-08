@@ -18,7 +18,7 @@ export default function ModelDropdown({ regField, year, make }) {
     
     return (
         <div>
-            <div className="block text-white/80 mb-1">Model</div>
+            <div className="block text-white mb-1">Model</div>
             <select
                 {...regField}
                 className="w-full p-3 bg-white/10 text-white rounded-xl 

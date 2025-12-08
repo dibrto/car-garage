@@ -78,18 +78,27 @@ export default function GarageCarForm(){
 
     return (
         <div className="w-full max-w-4xl mx-auto mt-10 p-6 rounded-2xl bg-black/30 backdrop-blur-lg border border-white/10 shadow-xl">
-            <h2 className="text-center text-2xl font-semibold text-white mb-6">Select a car</h2>
-            <form onSubmit={submitHandler} className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <h2 className="text-center text-2xl font-semibold text-white mb-6">Choose your car</h2>
+            <form onSubmit={submitHandler}>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <YearDropdown regField={{...regField("year")}} />
 
-                <YearDropdown regField={{...regField("year")}} />
+                    <MakeDropdown regField={regField("make")} year={data.year} />
 
-                <MakeDropdown regField={regField("make")} year={data.year} />
+                    <ModelDropdown regField={regField("model")} year={data.year} make={data.make} />
+                    
+                    <TrimDropdown regField={regField("model_id")} year={data.year} make={data.make} model={data.model} />
+                </div>
 
-                <ModelDropdown regField={regField("model")} year={data.year} make={data.make} />
-                
-                <TrimDropdown regField={regField("model_id")} year={data.year} make={data.make} model={data.model} />
+                <label className="block text-white pt-5">
+                    Image
+                    <input className="w-full p-3 bg-white/10 text-white rounded-xl
+                        border border-white/10 focus:outline-none 
+                        focus:ring-2 focus:ring-blue-500 mt-1" />
 
-                <button type="submit" className="bg-amber-50">Add car</button>
+                </label>
+
+                <button type="submit" className="bg-white-8pers text-white mt-5 p-3 px-8 rounded-xl cursor-pointer">Add car</button>
             </form>
 
         </div>

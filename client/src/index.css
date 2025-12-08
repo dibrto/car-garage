@@ -15,5 +15,6 @@
 @theme {
     --color-white: var(--text_main);
     --bg-btn: var(--gradient_btn);
+    --color-white-8pers: rgba(255, 255, 255, 0.08);
     --color-gray: var(--gray);
 }
