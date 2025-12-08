@@ -9,4 +9,10 @@ carQueryController.get("/years", async (req, res) => {
     res.json(data);
 });
 
+carQueryController.get("/makes", async (req, res) => {
+    const response = await fetch("https://www.carqueryapi.com/api/0.3/?cmd=getMakes&year=" + req.query.year);
+    const data = await response.json();
+    res.json(data);
+});
+
 export default carQueryController;
