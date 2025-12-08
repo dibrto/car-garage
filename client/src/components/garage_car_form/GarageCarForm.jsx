@@ -11,7 +11,7 @@ const initVals = {
     , make: ""
     , model: ""
     , model_id: ""
-    , model_imageUrl: "https://www.motozite.com/assets/front/images/No-Image.jpg"
+    , imageUrl: ""
 };
 
 export default function GarageCarForm(){
@@ -55,12 +55,20 @@ export default function GarageCarForm(){
     const submitHandler = async (e) => {
         e.preventDefault();
 
+        if (!data.model_id){
+            return;
+        }
+
+        if (!data.imageUrl){
+            data.imageUrl = "https://www.motozite.com/assets/front/images/No-Image.jpg";
+        }
+
         const response = await fetchData("carQuery", `car-info?model=${data.model_id}`);
         const carInfo = response[0];
 
         const reqData = {
-            "model_id": carInfo.model_id,
-            "model_imageUrl": data.model_imageUrl,
+            "model_id": data.model_id,
+            "model_imageUrl": data.imageUrl,
             "model_make_id": carInfo.model_make_id,
             "model_name": carInfo.model_name,
             "model_trim": carInfo.model_trim,
@@ -92,9 +100,10 @@ export default function GarageCarForm(){
 
                 <label className="block text-white pt-5">
                     Image
-                    <input className="w-full p-3 bg-white/10 text-white rounded-xl
-                        border border-white/10 focus:outline-none 
-                        focus:ring-2 focus:ring-blue-500 mt-1" />
+                    <input 
+                        className="w-full p-3 bg-white/10 text-white rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-1" 
+                        {...regField("imageUrl")}
+                    />
 
                 </label>
 
