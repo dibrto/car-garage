@@ -29,5 +29,12 @@ carQueryController.get("/trims", async (req, res) => {
     res.json(data);
 });
 
+carQueryController.get("/car-info", async (req, res) => {
+    const { model } = req.query;
+    const response = await fetch(`https://www.carqueryapi.com/api/0.3/?cmd=getModel&model=${model}`);
+    const data = await response.json();
+    res.json(data);
+});
+
 
 export default carQueryController;

@@ -6,7 +6,7 @@ export default function TrimDropdown({ regField, year, make, model }){
     const [trims, setTrims] = useState([]);
 
     useEffect(() => {
-        if (!year || !make, !model) {
+        if (!year || !make || !model) {
             setTrims([]);
             return;
         }
@@ -25,7 +25,7 @@ export default function TrimDropdown({ regField, year, make, model }){
                             border border-white/10 focus:outline-none 
                             focus:ring-2 focus:ring-blue-500">
                 <option value="" className="text-black">---</option>
-                { trims.map(trim => <option key={trim.model_trim} value={trim.model_trim} className="text-black" >{trim.model_trim}</option>) }
+                { trims.map(trim => <option key={trim.model_id} value={trim.model_id} className="text-black" >{trim.model_trim}</option>) }
             </select>
         </div>
     );

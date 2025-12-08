@@ -10,10 +10,10 @@ const initVals = {
     year: ""
     , make: ""
     , model: ""
-    , trim: ""
+    , model_id: ""
+    , model_imageUrl: "https://www.motozite.com/assets/front/images/No-Image.jpg"
 };
 
-// TODO: make request to car query api
 export default function GarageCarForm(){
     const { garageId, carId } = useParams();
     const {data, regField } = useForm(initVals);
@@ -52,13 +52,32 @@ export default function GarageCarForm(){
         navigate(`/garages/${garageId}`);
     };
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
-        console.log(data);
+
+        const response = await fetchData("carQuery", `car-info?model=${data.model_id}`);
+        const carInfo = response[0];
+
+        const reqData = {
+            "model_id": carInfo.model_id,
+            "model_imageUrl": data.model_imageUrl,
+            "model_make_id": carInfo.model_make_id,
+            "model_name": carInfo.model_name,
+            "model_trim": carInfo.model_trim,
+            "model_year": carInfo.model_year,
+            "make_display": carInfo.make_display,
+            "make_country": carInfo.make_country
+        };
+        const garage = await fetchData("data", `garages/${garageId}`);
+        garage.cars.push(reqData);
+        console.log(garage.cars);
+        
+        await fetchData("data", `garages/${garageId}`, "PUT", garage);
+        navigate(`/garages/${garageId}`);
     };
 
     return (
-        <div className="w-full max-w-4xl mx-auto mt-30 p-6 rounded-2xl bg-black/30 backdrop-blur-lg border border-white/10 shadow-xl">
+        <div className="w-full max-w-4xl mx-auto mt-10 p-6 rounded-2xl bg-black/30 backdrop-blur-lg border border-white/10 shadow-xl">
             <h2 className="text-center text-2xl font-semibold text-white mb-6">Select a car</h2>
             <form onSubmit={submitHandler} className="grid grid-cols-1 md:grid-cols-4 gap-6">
 
@@ -67,10 +86,10 @@ export default function GarageCarForm(){
                 <MakeDropdown regField={regField("make")} year={data.year} />
 
                 <ModelDropdown regField={regField("model")} year={data.year} make={data.make} />
+                
+                <TrimDropdown regField={regField("model_id")} year={data.year} make={data.make} model={data.model} />
 
-                <TrimDropdown regField={regField("trim")} year={data.year} make={data.make} model={data.model} />
-
-                <button type="submit" className="bg-amber-50">Submit</button>
+                <button type="submit" className="bg-amber-50">Add car</button>
             </form>
 
         </div>
