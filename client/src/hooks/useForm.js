@@ -18,5 +18,5 @@ export default function useForm(initVals){
         }
     };
 
-    return { data, setData, regField }
+    return { data, setData, regField, changeHandler }
 }
