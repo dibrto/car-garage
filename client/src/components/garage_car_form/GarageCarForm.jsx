@@ -3,9 +3,13 @@ import useFetch from "../../hooks/useFetch";
 import useForm from "../../hooks/useForm";
 import YearDropdown from "./YearDropdown";
 import MakeDropdown from "./MakeDropdown";
+import ModelDropdown from "./ModelDropdown";
 
 const initVals = {
     year: ""
+    , make: ""
+    , model: ""
+    , trim: ""
 };
 
 // TODO: make request to car query api
@@ -59,22 +63,9 @@ export default function GarageCarForm(){
 
                 <YearDropdown regField={{...regField("year")}} />
 
-                <MakeDropdown regField={regField("brand")} year={data.year} />
+                <MakeDropdown regField={regField("make")} year={data.year} />
 
-                {/* Model */}
-                <div>
-                    <div className="block text-white/80 mb-1">Model</div>
-                    <select
-                        // value={model}
-                        // onChange={(e) => setModel(e.target.value)}
-                        className="w-full p-3 bg-white/10 text-white rounded-xl 
-                                   border border-white/10 focus:outline-none 
-                                   focus:ring-2 focus:ring-blue-500">
-                        <option value="" className="text-black">---</option>
-                        <option>A4</option>
-                        <option>A6</option>
-                    </select>
-                </div>
+                <ModelDropdown regField={regField("model")} year={data.year} make={data.make} />
 
                 {/* Trim */}
                 <div>
