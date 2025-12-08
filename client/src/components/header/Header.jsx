@@ -6,7 +6,7 @@ export default function Header() {
     const [phoneMenu, setPhomeMenu] = useState(false);
 
     return (
-        <nav className="block py-4 w-full max-w-full rounded-none px-4 bg-transparent text-white shadow-none absolute z-50 border-0">
+        <nav className="block py-4 w-full max-w-full rounded-none px-4 bg-transparent text-white shadow-none relative z-50 border-0">
 
             {/* pc menu */}
             <div className="container mx-auto flex items-center justify-between">
