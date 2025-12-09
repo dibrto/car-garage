@@ -5,10 +5,11 @@ import YearDropdown from "./YearDropdown";
 import MakeDropdown from "./MakeDropdown";
 import ModelDropdown from "./ModelDropdown";
 import TrimDropdown from "./TrimDropdown";
+import { useEffect } from "react";
 
 const initVals = {
     year: ""
-    , make: ""
+    , make_id: ""
     , model: ""
     , model_id: ""
     , imageUrl: ""
@@ -16,22 +17,30 @@ const initVals = {
 
 export default function GarageCarForm(){
     const { garageId, carId } = useParams();
-    const {data, regField } = useForm(initVals);
+    const {data, regField, setData } = useForm(initVals);
     const { fetchData } = useFetch();
     const navigate = useNavigate();    
 
-    // // edit car 
-    // useEffect(() => {
-    //     if (!carId) {
-    //         return;
-    //     }
+    // edit car 
+    useEffect(() => {
+        if (!carId) {
+            return;
+        }
 
-    //     fetchData("data", `garages/${garageId}`)
-    //         .then(response => {
-    //             const car = response.cars.find(c => c.model_id === carId);
-    //             setData(car);
-    //         });
-    // }, [carId, fetchData, garageId, setData]);
+        fetchData("data", `garages/${garageId}`)
+            .then(response => {
+                const car = response.cars.find(c => c.model_id === carId);
+                const vals = {
+                    year: car.model_year
+                    , make_id: car.model_make_id
+                    , model: car.model_name
+                    , model_id: car.model_id
+                    , imageUrl: car.model_imageUrl
+                };
+                
+                setData(vals);
+            });
+    }, [carId, fetchData, garageId, setData]);
 
     // add car handler
     const AddCarHandler = async () => {
@@ -78,7 +87,6 @@ export default function GarageCarForm(){
         };
         const garage = await fetchData("data", `garages/${garageId}`);
         garage.cars.push(reqData);
-        console.log(garage.cars);
         
         await fetchData("data", `garages/${garageId}`, "PUT", garage);
         navigate(`/garages/${garageId}`);
@@ -89,13 +97,13 @@ export default function GarageCarForm(){
             <h2 className="text-center text-2xl font-semibold text-white mb-6">Choose your car</h2>
             <form onSubmit={submitHandler}>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <YearDropdown regField={{...regField("year")}} />
+                    <YearDropdown regField={regField("year")} />
 
-                    <MakeDropdown regField={regField("make")} year={data.year} />
+                    <MakeDropdown regField={regField("make_id")} year={data.year} />
 
-                    <ModelDropdown regField={regField("model")} year={data.year} make={data.make} />
+                    <ModelDropdown regField={regField("model")} year={data.year} make={data.make_id} />
                     
-                    <TrimDropdown regField={regField("model_id")} year={data.year} make={data.make} model={data.model} />
+                    <TrimDropdown regField={regField("model_id")} year={data.year} make={data.make_id} model={data.model} />
                 </div>
 
                 <label className="block text-white pt-5">

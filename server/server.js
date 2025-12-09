@@ -1349,9 +1349,9 @@
                 profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
                 cars: [
                     {
-                        "model_id": "60984",
+                        "model_id": "73955",
                         "model_imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Audi_A8_D5_%282021%29_1X7A6342.jpg",
-                        "model_make_id": "Audi",
+                        "model_make_id": "audi",
                         "model_name": "A8",
                         "model_trim": "3.0T quattro 4dr Sedan AWD (3.0L 6cyl S/C 8A)",
                         "model_year": "2019",
@@ -1362,7 +1362,7 @@
                         "model_id": "82782",
                         "model_imageUrl": "https://www.edmunds.com/assets/m/dodge/challenger/2021/oem/2021_dodge_challenger_coupe_rt-scat-pack-widebody_fq_oem_1_600.jpg",
                         "model_year": "2022",
-                        "model_make_id": "Dodge",
+                        "model_make_id": "dodge",
                         "model_name": "Challenger",
                         "model_trim": "SRT 392 2dr Coupe (6.4L 8cyl 6M)",
                         "make_display": "Dodge",
