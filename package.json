@@ -6,7 +6,8 @@
         "functions"
     ],
     "scripts": {
-        "dev:client": "npm run dev --workspace client",        
+        "dev:client": "npm run dev --workspace client",
+        "build:client": "npm run build --workspace client",
         "dev:functions": "npm run serve --workspace functions",
         "dev": "concurrently \"npm run dev:client\" \"npm run dev:functions\""
     },
