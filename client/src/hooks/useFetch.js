@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import useUser from "./useUser";
 
 const apis = {
@@ -10,12 +10,18 @@ const apis = {
 export default function useFetch(api, endPoint, initialState){
     const [data, setData] = useState(initialState);
     const { isAuthenticated, user } = useUser();
+    const initialStateRef = useRef(initialState);
+    const abortControllerRef = useRef(null);
 
     // calls fetch
     const fetchData = useCallback(async (api, endPoint, method, body) => {
         const fetchUrl = apis[api] + endPoint;
 
         let options = { headers: {} };
+
+        if (abortControllerRef.current){
+            options.signal = abortControllerRef.current.signal;
+        }
 
         if (method) {
             options.method = method;
@@ -48,18 +54,26 @@ export default function useFetch(api, endPoint, initialState){
             return response.json();
         }
         catch(err) {
+            if (err.name === 'AbortError') {
+                return initialStateRef.current;
+            }
+
             alert(err.message);
-            return null;
+            return initialStateRef.current;
         }
     }, [isAuthenticated, user]);
 
-    // TODO: add abort controller
     // comp mount exec
     useEffect(() => {
         if (!api || !endPoint) return;
 
+        const abortController = new AbortController();
+        abortControllerRef.current = abortController;
+
         fetchData(api, endPoint)
-            .then(result =>setData(result))
+            .then(result =>setData(result));
+
+        return () => abortController.abort();
     }, [api, endPoint, fetchData]);
 
     return { data, setData, fetchData };

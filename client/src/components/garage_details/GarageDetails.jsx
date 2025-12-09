@@ -1,5 +1,6 @@
-import styles from "./GarageDetails.module.css";
 import { Link, useParams } from "react-router";
+
+import styles from "./GarageDetails.module.css";
 import useFetch from "../../hooks/useFetch";
 import useUser from "../../hooks/useUser";
 
@@ -24,7 +25,10 @@ export default function GarageDetails(/*{ user, cars }*/) {
         setData(garage);
     };
 
-    return (
+    console.log(data);
+    
+
+    return (        
         <div className={styles["container"]}>
             {/* PROFILE HEADER */}
             <div className={styles["profile-card"]}>
