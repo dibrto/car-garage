@@ -23,10 +23,7 @@ export default function GarageDetails(/*{ user, cars }*/) {
         await fetchData("data", `garages/${garageId}`, "PATCH", {cars: garage.cars});
 
         setData(garage);
-    };
-
-    console.log(data);
-    
+    };    
 
     return (        
         <div className={styles["container"]}>
