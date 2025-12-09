@@ -72,11 +72,15 @@ export default function GarageDetails(/*{ user, cars }*/) {
                                 {/* <li><strong>Power:</strong> {car.model_engine_power_ps} HP</li>
                                 <li><strong>Fuel:</strong> {car.model_engine_fuel}</li> */}
                             </ul>
-
-                            <div className="flex gap-5">
-                                <Link to={`/garages/${garageId}/car/${car.model_id}/edit`} className={styles["edit-profile-btn"]}>Edit car</Link>
-                                <button type="button" className={styles["edit-profile-btn"]} onClick={() => deleteCarHandler(car.model_id)}>Delete car</button>
-                            </div>
+                                
+                            {
+                                user?._garageId === garageId && (
+                                    <div className="flex gap-5">
+                                        <Link to={`/garages/${garageId}/car/${car.model_id}/edit`} className={styles["edit-profile-btn"]}>Edit car</Link>
+                                        <button type="button" className={styles["edit-profile-btn"]} onClick={() => deleteCarHandler(car.model_id)}>Delete car</button>
+                                    </div>
+                                )
+                            }
 
                         </div>
                     </div>
