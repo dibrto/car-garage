@@ -5,7 +5,7 @@ export default function Home(){
     const { isAuthenticated, user } =  useUser();
 
     return (
-        <div className="grid min-h-screen px-8">
+        <div className="grid min-h-[calc(100vh-64px)] px-8">
             <div className="container relative my-auto mx-auto grid place-items-center text-center">
                 <h1 className="block antialiased tracking-normal font-sans font-semibold text-white text-3xl leading-snug! md:max-w-full lg:max-w-3xl lg:text-5xl">My garage</h1>
                 <p className="block antialiased font-sans text-xl font-normal leading-relaxed text-white mt-2 mb-14 w-full max-w-3xl lg:mb-10">Manage and customize your personal collection of cars in one place.<br/> Add vehicles, explore detailed specs, and build your own digital garage with ease.</p>
