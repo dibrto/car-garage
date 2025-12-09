@@ -44,6 +44,7 @@ export default function GarageCarForm(){
    
     const prepareCarData = async () => {     
         if (!data.model_id){
+            alert("Fill all required fields");
             return;
         }
 

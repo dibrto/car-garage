@@ -18,7 +18,7 @@ export default function TrimDropdown({ regField, year, make, model }){
 
     return (
          <div>
-            <div className="block text-white mb-1">Trim</div>
+            <div className="block text-white mb-1">Trim <span className="text-red-500">*</span></div>
             <select
                 {...regField}
                 className="w-full p-3 bg-white/10 text-white rounded-xl 
