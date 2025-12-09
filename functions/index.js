@@ -17,6 +17,12 @@ exports.server = onRequest((req, res) => {
     server.emit('request', req, res);
 });
 
+// API – поправено
+exports.api = onRequest(async (req, res) => {
+    const { default: apiApp } = await import("./api/src/index.js");
+    return apiApp(req, res);
+});
+
 setGlobalOptions({ maxInstances: 1 });
 
 // Create and deploy your first functions

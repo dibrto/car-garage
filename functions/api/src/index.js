@@ -8,5 +8,4 @@ app.use(express.json());
 
 app.use("/api/v1", router);
 
-const PORT = 3031;
-app.listen(PORT, () => console.log(`Server is listening on port http://localhost:${PORT}`));
+export default app;
