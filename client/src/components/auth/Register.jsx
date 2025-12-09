@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import styles from "./AuthForm.module.css";
 import useForm from "../../hooks/useForm";
 import useUser from "../../hooks/useUser";
+import { toast } from "react-toastify";
 
 const initVals = {
     email : ""
@@ -17,12 +18,12 @@ export default function Register() {
         const { email, password, rePassword, username } = data;
 
         if (email === "" || password === "" || rePassword === ""){
-            alert("Fill all fields");
+            toast.error("Fill all fields");
             return;
         }
 
         if (password != rePassword){
-            alert("Passwords don't match");
+            toast.error("Passwords don't match");
             return;
         }
 

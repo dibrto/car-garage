@@ -7,6 +7,7 @@ import YearDropdown from "./YearDropdown";
 import MakeDropdown from "./MakeDropdown";
 import ModelDropdown from "./ModelDropdown";
 import TrimDropdown from "./TrimDropdown";
+import { toast } from "react-toastify";
 
 const initVals = {
     year: ""
@@ -45,7 +46,7 @@ export default function GarageCarForm(){
    
     const prepareCarData = async () => {     
         if (!data.model_id){
-            alert("Fill all required fields");
+            toast.error("Fill all required fields");
             return;
         }
 
@@ -83,6 +84,7 @@ export default function GarageCarForm(){
         garage.cars = updatedCars;
 
         await fetchData("data", `garages/${garageId}`, "PUT", garage);
+        toast.success("Car edited successfully");
         navigate(`/garages/${garageId}`);
     };
 
@@ -97,6 +99,7 @@ export default function GarageCarForm(){
         garage.cars.push(reqData);
         
         await fetchData("data", `garages/${garageId}`, "PUT", garage);
+        toast.success("Car added successfully");
         navigate(`/garages/${garageId}`);
     };
 

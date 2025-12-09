@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router"
+import { ToastContainer } from 'react-toastify';
 
 import Header from "./components/header/Header"
 import Home from "./components/home/Home"
@@ -18,6 +19,8 @@ export default function App() {
                 <div className="absolute min-h-full w-full bg-gray-900/70"></div>
                 
                 <Header />
+
+                <ToastContainer />
 
                 <Routes>
                     <Route path="/" element={<Home />} />

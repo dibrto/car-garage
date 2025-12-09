@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import styles from "./AuthForm.module.css";
 import useForm from "../../hooks/useForm";
 import useUser from "../../hooks/useUser";
+import { toast } from "react-toastify";
 
 const initVals = {
     email : "",
@@ -17,7 +18,7 @@ export default function Login() {
         const { email, password } = data;
 
         if (email === "" || password === ""){
-            alert("Fill all fields");
+            toast.error("Fill all fields");
             return;
         }
 

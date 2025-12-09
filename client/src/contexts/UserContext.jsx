@@ -2,6 +2,7 @@ import { createContext } from "react";
 import useFetch from "../hooks/useFetch";
 import { useNavigate } from "react-router";
 import useLocalStorage from "../hooks/useLocalStorage";
+import { toast } from "react-toastify";
 
 const UserContext = createContext({
     user: {
@@ -43,6 +44,7 @@ export function UserProvider({ children }) {
         userInfo._garageId = garageInfo._id;
 
         setUser(userInfo);
+        toast.success("Registration successful");
         navigate("/garages");
     }
 

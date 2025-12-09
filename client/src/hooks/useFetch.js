@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import useUser from "./useUser";
+import { toast } from "react-toastify";
 
 const apis = {
     auth: import.meta.env.VITE_API_AUTH_URL
@@ -58,7 +59,7 @@ export default function useFetch(api, endPoint, initialState){
                 return initialStateRef.current;
             }
 
-            alert(err.message);
+            toast.error(err.message || "There was an error");
             return initialStateRef.current;
         }
     }, [isAuthenticated, user]);
