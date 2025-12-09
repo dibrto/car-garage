@@ -42,35 +42,7 @@ export default function GarageCarForm(){
             });
     }, [carId, fetchData, garageId, setData]);
    
-    // edit car handler
-    const editCarHandler = async (e) => {
-        e.preventDefault();
-
-        const response = await fetchData("carQuery", `car-info?model=${data.model_id}`);
-        const carInfo = response[0];
-
-        const reqData = {
-            "model_id": data.model_id,
-            "model_imageUrl": data.imageUrl,
-            "model_make_id": carInfo.model_make_id,
-            "model_name": carInfo.model_name,
-            "model_trim": carInfo.model_trim,
-            "model_year": carInfo.model_year,
-            "make_display": carInfo.make_display,
-            "make_country": carInfo.make_country
-        };
-
-        const garage = await fetchData("data", `garages/${garageId}`);
-        const updatedCars = garage.cars.map(car => car.model_id === carId ? reqData : car);
-        garage.cars = updatedCars;
-
-        await fetchData("data", `garages/${garageId}`, "PUT", garage);
-        navigate(`/garages/${garageId}`);
-    };
-
-    const addCarHandler = async (e) => {
-        e.preventDefault();
-
+    const prepareCarData = async () => {     
         if (!data.model_id){
             return;
         }
@@ -92,6 +64,33 @@ export default function GarageCarForm(){
             "make_display": carInfo.make_display,
             "make_country": carInfo.make_country
         };
+
+        return reqData;
+    };
+
+    // edit car handler
+    const editCarHandler = async (e) => {
+        e.preventDefault();
+        const reqData = await prepareCarData();
+        if (!reqData){
+            return;
+        }
+
+        const garage = await fetchData("data", `garages/${garageId}`);
+        const updatedCars = garage.cars.map(car => car.model_id === carId ? reqData : car);
+        garage.cars = updatedCars;
+
+        await fetchData("data", `garages/${garageId}`, "PUT", garage);
+        navigate(`/garages/${garageId}`);
+    };
+
+    const addCarHandler = async (e) => {
+        e.preventDefault();
+        const reqData = await prepareCarData();
+        if (!reqData){
+            return;
+        }
+        
         const garage = await fetchData("data", `garages/${garageId}`);
         garage.cars.push(reqData);
         
