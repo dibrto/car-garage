@@ -26,7 +26,7 @@ export default function MakeDropdown({ regField, year }){
                             focus:ring-2 focus:ring-blue-500"
             >
                 <option value="" className="text-black">---</option>
-                { makes.map(make => <option key={make.make_id} value={make.make_id} className="text-black" >{make.make_display}</option>) }
+                { makes.map(make => <option key={make.make} value={make.make} className="text-black" >{make.make_display}</option>) }
             </select>
         </div>
     );

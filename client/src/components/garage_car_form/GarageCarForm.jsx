@@ -9,7 +9,7 @@ import { useEffect } from "react";
 
 const initVals = {
     year: ""
-    , make_id: ""
+    , make: ""
     , model: ""
     , model_id: ""
     , imageUrl: ""
@@ -32,7 +32,7 @@ export default function GarageCarForm(){
                 const car = response.cars.find(c => c.model_id === carId);
                 const vals = {
                     year: car.model_year
-                    , make_id: car.model_make_id
+                    , make: car.model_make_id
                     , model: car.model_name
                     , model_id: car.model_id
                     , imageUrl: car.model_imageUrl
@@ -41,27 +41,34 @@ export default function GarageCarForm(){
                 setData(vals);
             });
     }, [carId, fetchData, garageId, setData]);
-
-    // add car handler
-    const AddCarHandler = async () => {
-        const garage = await fetchData("data", `garages/${garageId}`);
-        garage.cars.push(data);
-
-        await fetchData("data", `garages/${garageId}`, "PUT", garage);
-        navigate(`/garages/${garageId}`);
-    };
-
+   
     // edit car handler
-    const EditCarHandler = async () => {
+    const editCarHandler = async (e) => {
+        e.preventDefault();
+
+        const response = await fetchData("carQuery", `car-info?model=${data.model_id}`);
+        const carInfo = response[0];
+
+        const reqData = {
+            "model_id": data.model_id,
+            "model_imageUrl": data.imageUrl,
+            "model_make_id": carInfo.model_make_id,
+            "model_name": carInfo.model_name,
+            "model_trim": carInfo.model_trim,
+            "model_year": carInfo.model_year,
+            "make_display": carInfo.make_display,
+            "make_country": carInfo.make_country
+        };
+
         const garage = await fetchData("data", `garages/${garageId}`);
-        const updatedCars = garage.cars.map(car => car.model_id === carId ? data : car);
+        const updatedCars = garage.cars.map(car => car.model_id === carId ? reqData : car);
         garage.cars = updatedCars;
 
         await fetchData("data", `garages/${garageId}`, "PUT", garage);
         navigate(`/garages/${garageId}`);
     };
 
-    const submitHandler = async (e) => {
+    const addCarHandler = async (e) => {
         e.preventDefault();
 
         if (!data.model_id){
@@ -95,15 +102,15 @@ export default function GarageCarForm(){
     return (
         <div className="w-full max-w-4xl mx-auto mt-10 p-6 rounded-2xl bg-black/30 backdrop-blur-lg border border-white/10 shadow-xl">
             <h2 className="text-center text-2xl font-semibold text-white mb-6">Choose your car</h2>
-            <form onSubmit={submitHandler}>
+            <form onSubmit={!carId ? addCarHandler : editCarHandler}>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                     <YearDropdown regField={regField("year")} />
 
-                    <MakeDropdown regField={regField("make_id")} year={data.year} />
+                    <MakeDropdown regField={regField("make")} year={data.year} />
 
-                    <ModelDropdown regField={regField("model")} year={data.year} make={data.make_id} />
+                    <ModelDropdown regField={regField("model")} year={data.year} make={data.make} />
                     
-                    <TrimDropdown regField={regField("model_id")} year={data.year} make={data.make_id} model={data.model} />
+                    <TrimDropdown regField={regField("model_id")} year={data.year} make={data.make} model={data.model} />
                 </div>
 
                 <label className="block text-white pt-5">
@@ -115,7 +122,7 @@ export default function GarageCarForm(){
 
                 </label>
 
-                <button type="submit" className="bg-white-8pers text-white mt-5 p-3 px-8 rounded-xl cursor-pointer">Add car</button>
+                <button type="submit" className="bg-white-8pers text-white mt-5 p-3 px-8 rounded-xl cursor-pointer">{!carId ? "Add car" : "Edit car"}</button>
             </form>
 
         </div>
