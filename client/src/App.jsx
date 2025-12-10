@@ -9,9 +9,9 @@ import Logout from "./components/auth/Logout"
 import GarageList from "./components/garage_list/GarageList"
 import GarageDetails from "./components/garage_details/GarageDetails"
 import GarageCarForm from "./components/garage_car_form/GarageCarForm"
+import Loader from "./components/Loader/Loader";
 
 export default function App() {
-
     return (
         <>
             
@@ -21,6 +21,7 @@ export default function App() {
                 <Header />
 
                 <ToastContainer />
+                <Loader />
 
                 <Routes>
                     <Route path="/" element={<Home />} />
