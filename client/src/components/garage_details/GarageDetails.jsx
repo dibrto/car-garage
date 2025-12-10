@@ -30,7 +30,10 @@ export default function GarageDetails(/*{ user, cars }*/) {
         const garage = await fetchData("data", `garages/${garageId}`);
         garage.followers.push(user._id);
 
-        await fetchData("data", `garages/${garageId}`, "PUT", garage);
+        const res = await fetchData("data", `garages/${garageId}`, "PUT", garage);
+        if (!res) return;
+
+        setData(res);
         toast.success("You start following this garage");
     };
 
@@ -38,8 +41,11 @@ export default function GarageDetails(/*{ user, cars }*/) {
         const garage = await fetchData("data", `garages/${garageId}`);
         const updFollowers = garage.followers.filter(follower => follower !== user._id);
         garage.followers = updFollowers;
-        
-         await fetchData("data", `garages/${garageId}`, "PUT", garage);
+                
+        const res = await fetchData("data", `garages/${garageId}`, "PUT", garage);
+        if (!res) return;
+
+        setData(res);
         toast.success("You unfollow this garage");
     };
 
