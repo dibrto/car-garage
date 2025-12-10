@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 
-export default function MakeDropdown({ regField, year }){
+export default function MakeDropdown({ regField, setData, year }){
     const { fetchData } = useFetch();
     const [makes, setMakes] = useState([]);
 
@@ -16,11 +16,21 @@ export default function MakeDropdown({ regField, year }){
 
     }, [year, fetchData]);
 
+    const onMakeChange = (e) => {
+        setData(prev => ({
+            ...prev,
+            make: e.target.value,
+            model: "",
+            model_id: ""
+        }));
+    };
+
     return (
          <div>
             <div className="block text-white mb-1">Make <span className="text-red-500">*</span></div>
             <select                
                 {...regField}
+                onChange={onMakeChange}
                 className="w-full p-3 bg-white/10 text-white rounded-xl 
                             border border-white/10 focus:outline-none 
                             focus:ring-2 focus:ring-blue-500"
