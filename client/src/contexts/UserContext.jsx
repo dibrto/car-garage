@@ -35,7 +35,7 @@ export function UserProvider({ children }) {
             accessToken: userInfo.accessToken
             , _ownerId: userInfo._id
             , garageCover: "https://www.motozite.com/assets/front/images/No-Image.jpg"
-            , followers: 0
+            , followers: []
             , username
             , profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg"
             , cars: []

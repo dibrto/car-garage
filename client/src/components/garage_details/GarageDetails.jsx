@@ -3,10 +3,11 @@ import { Link, useParams } from "react-router";
 import styles from "./GarageDetails.module.css";
 import useFetch from "../../hooks/useFetch";
 import useUser from "../../hooks/useUser";
+import { toast } from "react-toastify";
 
 export default function GarageDetails(/*{ user, cars }*/) {
     const { garageId } = useParams();
-    const { data, fetchData, setData } = useFetch("data", `garages/${garageId}`, { author: {}, cars: [] });
+    const { data, fetchData, setData } = useFetch("data", `garages/${garageId}`, { author: {}, cars: [], followers: [] });
     const { user } = useUser();
 
     const deleteCarHandler = async (carModelId) => {
@@ -25,6 +26,14 @@ export default function GarageDetails(/*{ user, cars }*/) {
         setData(garage);
     };    
 
+    const followHandler = async () => {
+        const garage = await fetchData("data", `garages/${garageId}`);
+        garage.followers.push(user._id);
+
+        await fetchData("data", `garages/${garageId}`, "PUT", garage);
+        toast.success("You start following this garage");
+    };
+
     return (        
         <div className={styles["container"]}>
             {/* PROFILE HEADER */}
@@ -39,7 +48,7 @@ export default function GarageDetails(/*{ user, cars }*/) {
                     <div>
                         <h2>{data.username}</h2>
                         <p>{data.cars.length} cars in garage</p>
-                        <p>{data.followers} followers</p>                        
+                        <p>{data.followers.length} followers</p>
                     </div>
 
                     { user && ( 
@@ -52,7 +61,7 @@ export default function GarageDetails(/*{ user, cars }*/) {
                             )
                             : (
                                 <div className="flex gap-5">
-                                    <button className={styles["edit-profile-btn"]} >Follow</button>
+                                    <button className={styles["edit-profile-btn"]} onClick={followHandler}>Follow</button>
                                 </div>
                             )
                         )

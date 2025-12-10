@@ -43,6 +43,7 @@ export default function useFetch(api, endPoint, initialState){
 
         if (isAuthenticated){
             options.headers["X-Authorization"] = user.accessToken;
+            options.headers["X-Admin"] = true;
         }
 
         try {
