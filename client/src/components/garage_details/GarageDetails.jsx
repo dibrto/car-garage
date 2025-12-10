@@ -34,6 +34,15 @@ export default function GarageDetails(/*{ user, cars }*/) {
         toast.success("You start following this garage");
     };
 
+    const unfollowHandler = async () => {
+        const garage = await fetchData("data", `garages/${garageId}`);
+        const updFollowers = garage.followers.filter(follower => follower !== user._id);
+        garage.followers = updFollowers;
+        
+         await fetchData("data", `garages/${garageId}`, "PUT", garage);
+        toast.success("You unfollow this garage");
+    };
+
     return (        
         <div className={styles["container"]}>
             {/* PROFILE HEADER */}
@@ -60,9 +69,17 @@ export default function GarageDetails(/*{ user, cars }*/) {
                                 </div>
                             )
                             : (
-                                <div className="flex gap-5">
-                                    <button className={styles["edit-profile-btn"]} onClick={followHandler}>Follow</button>
-                                </div>
+                                data.followers.includes(user._id) 
+                                ? (
+                                    <div className="flex gap-5">
+                                        <div className={styles["edit-profile-btn"]} onClick={unfollowHandler}>Unfollow</div>
+                                    </div>
+                                )
+                                : (
+                                    <div className="flex gap-5">
+                                        <button className={styles["edit-profile-btn"]} onClick={followHandler}>Follow</button>
+                                    </div>
+                                )
                             )
                         )
                     }
