@@ -3,10 +3,11 @@ import { Link, useParams } from "react-router";
 import styles from "./GarageDetails.module.css";
 import useFetch from "../../hooks/useFetch";
 import useUser from "../../hooks/useUser";
+import { toast } from "react-toastify";
 
 export default function GarageDetails(/*{ user, cars }*/) {
     const { garageId } = useParams();
-    const { data, fetchData, setData } = useFetch("data", `garages/${garageId}`, { author: {}, cars: [] });
+    const { data, fetchData, setData } = useFetch("data", `garages/${garageId}`, { author: {}, cars: [], followers: [] });
     const { user } = useUser();
 
     const deleteCarHandler = async (carModelId) => {
@@ -25,6 +26,29 @@ export default function GarageDetails(/*{ user, cars }*/) {
         setData(garage);
     };    
 
+    const followHandler = async () => {
+        const garage = await fetchData("data", `garages/${garageId}`);
+        garage.followers.push(user._id);
+
+        const res = await fetchData("data", `garages/${garageId}`, "PUT", garage);
+        if (!res) return;
+
+        setData(res);
+        toast.success("You start following this garage");
+    };
+
+    const unfollowHandler = async () => {
+        const garage = await fetchData("data", `garages/${garageId}`);
+        const updFollowers = garage.followers.filter(follower => follower !== user._id);
+        garage.followers = updFollowers;
+                
+        const res = await fetchData("data", `garages/${garageId}`, "PUT", garage);
+        if (!res) return;
+
+        setData(res);
+        toast.success("You unfollow this garage");
+    };
+
     return (        
         <div className={styles["container"]}>
             {/* PROFILE HEADER */}
@@ -36,16 +60,33 @@ export default function GarageDetails(/*{ user, cars }*/) {
                 />
 
                 <div className={styles["profile-info"]}>
-                    <div className="pb-5">
+                    <div>
                         <h2>{data.username}</h2>
                         <p>{data.cars.length} cars in garage</p>
+                        <p>{data.followers.length} followers</p>
                     </div>
-                    { user?._garageId === garageId 
-                        && (
-                            <div className="flex gap-5">
-                                {/* <button className={styles["edit-profile-btn"]}>Edit profile</button> */}
-                                <Link to={`/garages/${garageId}/car/add`} className={styles["edit-profile-btn"]}>Add car</Link>
-                            </div>
+
+                    { user && ( 
+                        user._garageId === garageId
+                            ? (
+                                <div className="flex gap-5">
+                                    {/* <button className={styles["edit-profile-btn"]}>Edit profile</button> */}
+                                    <Link to={`/garages/${garageId}/car/add`} className={styles["edit-profile-btn"]}>Add car</Link>
+                                </div>
+                            )
+                            : (
+                                data.followers.includes(user._id) 
+                                ? (
+                                    <div className="flex gap-5">
+                                        <div className={styles["edit-profile-btn"]} onClick={unfollowHandler}>Unfollow</div>
+                                    </div>
+                                )
+                                : (
+                                    <div className="flex gap-5">
+                                        <button className={styles["edit-profile-btn"]} onClick={followHandler}>Follow</button>
+                                    </div>
+                                )
+                            )
                         )
                     }
                 </div>

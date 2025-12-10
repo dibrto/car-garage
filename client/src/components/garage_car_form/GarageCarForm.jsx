@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 import useFetch from "../../hooks/useFetch";
 import useForm from "../../hooks/useForm";
@@ -7,7 +8,6 @@ import YearDropdown from "./YearDropdown";
 import MakeDropdown from "./MakeDropdown";
 import ModelDropdown from "./ModelDropdown";
 import TrimDropdown from "./TrimDropdown";
-import { toast } from "react-toastify";
 
 const initVals = {
     year: ""
@@ -71,7 +71,6 @@ export default function GarageCarForm(){
         return reqData;
     };
 
-    // edit car handler
     const editCarHandler = async (e) => {
         e.preventDefault();
         const reqData = await prepareCarData();
@@ -108,11 +107,11 @@ export default function GarageCarForm(){
             <h2 className="text-center text-2xl font-semibold text-white mb-6">Choose your car</h2>
             <form onSubmit={!carId ? addCarHandler : editCarHandler}>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <YearDropdown regField={regField("year")} />
+                    <YearDropdown regField={regField("year")} setData={setData} />
 
-                    <MakeDropdown regField={regField("make")} year={data.year} />
+                    <MakeDropdown regField={regField("make")} setData={setData} year={data.year} />
 
-                    <ModelDropdown regField={regField("model")} year={data.year} make={data.make} />
+                    <ModelDropdown regField={regField("model")} setData={setData} year={data.year} make={data.make} />
                     
                     <TrimDropdown regField={regField("model_id")} year={data.year} make={data.make} model={data.model} />
                 </div>

@@ -9,33 +9,36 @@ import Logout from "./components/auth/Logout"
 import GarageList from "./components/garage_list/GarageList"
 import GarageDetails from "./components/garage_details/GarageDetails"
 import GarageCarForm from "./components/garage_car_form/GarageCarForm"
+import Loader from "./components/Loader/Loader";
+import ProtectedRoute from "./components/route_guards/ProtectedRoute";
+import GuestRoute from "./components/route_guards/GuestRoute";
 
 export default function App() {
-
     return (
-        <>
-            
+        <>            
             <div className="relative min-h-screen w-full bg-cover bg-no-repeat" style={{backgroundImage: "url('https://bucket.material-tailwind.com/magic-ai/5047c695d8e41617b4b59ad104f0d925a2909e00b1822c20328b992a99c86022.jpg')"}}>
                 <div className="absolute min-h-full w-full bg-gray-900/70"></div>
                 
                 <Header />
 
                 <ToastContainer />
+                <Loader />
 
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/garages" element={<GarageList />} />
+                    <Route path="/garages/:garageId" element={<GarageDetails />} />
 
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/logout" element={<Logout />} />
-
-                    <Route path="garages" >
-                        <Route index element={<GarageList />} />
-                        <Route path=":garageId" element={<GarageDetails />} />
-                        <Route path=":garageId/car/add" element={<GarageCarForm />} />
-                        <Route path=":garageId/car/:carId/edit" element={<GarageCarForm />} />
+                    <Route element={<GuestRoute />}>
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
                     </Route>
 
+                    <Route element={<ProtectedRoute />}>
+                        <Route path="/logout" element={<Logout />} />
+                        <Route path="/garages/:garageId/car/add" element={<GarageCarForm />} />
+                        <Route path="/garages/:garageId/car/:carId/edit" element={<GarageCarForm />} />
+                    </Route>
                 </Routes>
             </div>
         </>

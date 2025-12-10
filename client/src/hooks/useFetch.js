@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import useUser from "./useUser";
 import { toast } from "react-toastify";
+import useLoader from "./useLoader";
 
 const apis = {
     auth: import.meta.env.VITE_API_AUTH_URL
@@ -13,9 +14,11 @@ export default function useFetch(api, endPoint, initialState){
     const { isAuthenticated, user } = useUser();
     const initialStateRef = useRef(initialState);
     const abortControllerRef = useRef(null);
+    const { startLoading, stopLoading } = useLoader();
 
     // calls fetch
     const fetchData = useCallback(async (api, endPoint, method, body) => {
+        startLoading();
         const fetchUrl = apis[api] + endPoint;
 
         let options = { headers: {} };
@@ -43,6 +46,7 @@ export default function useFetch(api, endPoint, initialState){
 
         if (isAuthenticated){
             options.headers["X-Authorization"] = user.accessToken;
+            options.headers["X-Admin"] = true; // for followers feat
         }
 
         try {
@@ -62,7 +66,10 @@ export default function useFetch(api, endPoint, initialState){
             toast.error(err.message || "There was an error");
             return initialStateRef.current;
         }
-    }, [isAuthenticated, user]);
+        finally {
+            stopLoading();
+        }
+    }, [isAuthenticated, user, startLoading, stopLoading]);
 
     // comp mount exec
     useEffect(() => {

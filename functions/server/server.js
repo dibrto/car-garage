@@ -1347,6 +1347,7 @@
                 _ownerId: "4c8e2d3a-0d76-4a8f-9e2f-8d4c6680b4c1",
                 garageCover: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Audi_A8_D5_%282021%29_1X7A6342.jpg",
                 username: "Daniel Bratov",
+                followers: ["35c62d76-8152-4626-8712-eeb96381bea8", "847ec027-f659-4086-8032-5173e2f9c93a"],
                 profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
                 cars: [
                     {
@@ -1368,13 +1369,24 @@
                         "model_trim": "SRT 392 2dr Coupe (6.4L 8cyl 6M)",
                         "make_display": "Dodge",
                         "make_country": "USA"
-                    }
+                    },
+                    {
+                        "model_id": "39281",
+                        "model_imageUrl": "https://img.autoabc.lv/Toyota-Auris/Toyota-Auris_2007_Hecbeks_15119125336_7.jpg",
+                        "model_make_id": "toyota",
+                        "model_name": "Auris",
+                        "model_trim": "2.0 D-4D",
+                        "model_year": "2008",
+                        "make_display": "Toyota",
+                        "make_country": "Japan"
+                    }                        
                 ]
             },
             "b1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad": {
                 _id: "b1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad",
                 _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
                 garageCover: "https://img-ik.cars.co.za/news-site-za/images/2025/09/LemonGarage23.jpg?tr=h-347,w-617,q-80",
+                followers: [],
                 username: "George",
                 profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
                 cars: [
@@ -1394,6 +1406,7 @@
                 _id: "c1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad",
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
                 garageCover: "https://images.pexels.com/photos/5050535/pexels-photo-5050535.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                followers: [],
                 username: "Peter",
                 profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
                 cars: [
@@ -1407,6 +1420,16 @@
                         "make_display": "Dodge",
                         "make_country": "USA"
                     },
+                    {
+                        "model_id": "58698",
+                        "model_imageUrl": "https://platform.cstatic-images.com/xxlarge/in/v2/stock_photos/b5ed207f-ea2f-47fb-8166-cd47f33e5df9/4d820403-a002-4ce7-9fab-e8707a328571.png",
+                        "model_make_id": "ferrari",
+                        "model_name": "458",
+                        "model_trim": "Italia",
+                        "model_year": "2013",
+                        "make_display": "Ferrari",
+                        "make_country": "Italy"
+                    }
                 ]
             }
         }
