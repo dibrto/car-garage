@@ -1347,6 +1347,7 @@
                 _ownerId: "4c8e2d3a-0d76-4a8f-9e2f-8d4c6680b4c1",
                 garageCover: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Audi_A8_D5_%282021%29_1X7A6342.jpg",
                 username: "Daniel Bratov",
+                followers: 2,
                 profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
                 cars: [
                     {
@@ -1375,6 +1376,7 @@
                 _id: "b1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad",
                 _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
                 garageCover: "https://img-ik.cars.co.za/news-site-za/images/2025/09/LemonGarage23.jpg?tr=h-347,w-617,q-80",
+                followers: 0,
                 username: "George",
                 profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
                 cars: [
@@ -1394,6 +1396,7 @@
                 _id: "c1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad",
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
                 garageCover: "https://images.pexels.com/photos/5050535/pexels-photo-5050535.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                followers: 1,
                 username: "Peter",
                 profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
                 cars: [
