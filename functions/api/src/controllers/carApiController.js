@@ -10,4 +10,11 @@ carApiController.get("/makes", async (req, res) => {
     res.json(data);
 });
 
+carApiController.get("/models", async (req, res) => {
+    const { year, make } = req.query;
+    const response = await fetch(`https://carapi.app/api/models/v2?year=${year}&make=${make}`);
+    const data = await response.json();
+    res.json(data);
+});
+
 export default carApiController;
