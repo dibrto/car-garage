@@ -11,12 +11,12 @@ export default function ModelDropdown({ regField, setData, year, make }) {
             return;
         }
 
-        fetchData("carQuery", `models?year=${year}&make=${make}`)
-            .then(response => setModels(response.Models));
+        fetchData("carApi", `models?year=${year}&make=${make}`)
+            .then(response => setModels(response.data));
 
     }, [year, make, fetchData]);
-    
-    
+
+
     const onModelChange = (e) => {
         setData(prev => ({
             ...prev,
@@ -35,7 +35,7 @@ export default function ModelDropdown({ regField, setData, year, make }) {
                             border border-white/10 focus:outline-none 
                             focus:ring-2 focus:ring-blue-500">
                 <option value="" className="text-black">---</option>
-                { models.map(model => <option key={model.model_name} value={model.model_name} className="text-black" >{model.model_name}</option>) }
+                {models.map(model => <option key={model.id} value={model.name} className="text-black" >{model.name}</option>)}
             </select>
         </div>
     );

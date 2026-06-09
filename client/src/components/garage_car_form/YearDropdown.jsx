@@ -1,12 +1,12 @@
-import useFetch from "../../hooks/useFetch";
+// import useFetch from "../../hooks/useFetch";
 
-export default function YearDropdown({ regField, setData }){    
-    const { data: years } = useFetch("carQuery", "years", { Years: {} });
+export default function YearDropdown({ regField, setData }) {
+    //const { data: years } = useFetch("carQuery", "years", { Years: {} });
 
     let yearsOptions = [];
-    const minYear = Number(years.Years.min_year);
-    const maxYear = Number(years.Years.max_year);
-    for (let i = maxYear; i >= minYear; i--) {
+    // const minYear = Number(years.Years.min_year);
+    // const maxYear = Number(years.Years.max_year);
+    for (let i = 2015; i <= 2020; i++) {
         yearsOptions.push(i);
     }
 
@@ -29,8 +29,8 @@ export default function YearDropdown({ regField, setData }){
                 onChange={onYearChange}
             >
                 <option className="text-black" value="">---</option>
-                { yearsOptions.map(year => <option key={year} value={year} className="text-black" >{year}</option>) }
-            </select> 
+                {yearsOptions.map(year => <option key={year} value={year} className="text-black" >{year}</option>)}
+            </select>
         </div>
     );
 };

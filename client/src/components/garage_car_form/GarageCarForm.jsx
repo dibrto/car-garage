@@ -17,11 +17,11 @@ const initVals = {
     , imageUrl: ""
 };
 
-export default function GarageCarForm(){
+export default function GarageCarForm() {
     const { garageId, carId } = useParams();
-    const {data, regField, setData } = useForm(initVals);
+    const { data, regField, setData } = useForm(initVals);
     const { fetchData } = useFetch();
-    const navigate = useNavigate();    
+    const navigate = useNavigate();
 
     // edit car 
     useEffect(() => {
@@ -39,33 +39,33 @@ export default function GarageCarForm(){
                     , model_id: car.model_id
                     , imageUrl: car.model_imageUrl
                 };
-                
+
                 setData(vals);
             });
     }, [carId, fetchData, garageId, setData]);
-   
-    const prepareCarData = async () => {     
-        if (!data.model_id){
+
+    const prepareCarData = async () => {
+        if (!data.model_id) {
             toast.error("Fill all required fields");
             return;
         }
 
-        if (!data.imageUrl){
+        if (!data.imageUrl) {
             data.imageUrl = "https://www.motozite.com/assets/front/images/No-Image.jpg";
         }
 
-        const response = await fetchData("carQuery", `car-info?model=${data.model_id}`);
-        const carInfo = response[0];
+        const response = await fetchData("carApi", `car-info?id=${data.model_id}`);
+        // const carInfo = response[0];
 
         const reqData = {
             "model_id": data.model_id,
             "model_imageUrl": data.imageUrl,
-            "model_make_id": carInfo.model_make_id,
-            "model_name": carInfo.model_name,
-            "model_trim": carInfo.model_trim,
-            "model_year": carInfo.model_year,
-            "make_display": carInfo.make_display,
-            "make_country": carInfo.make_country
+            "model_make_id": data.make,
+            "model_name": data.model,
+            "model_trim": response.description,
+            "model_year": data.year,
+            // "make_display": carInfo.make_display,
+            // "make_country": carInfo.make_country
         };
 
         return reqData;
@@ -74,7 +74,7 @@ export default function GarageCarForm(){
     const editCarHandler = async (e) => {
         e.preventDefault();
         const reqData = await prepareCarData();
-        if (!reqData){
+        if (!reqData) {
             return;
         }
 
@@ -90,13 +90,13 @@ export default function GarageCarForm(){
     const addCarHandler = async (e) => {
         e.preventDefault();
         const reqData = await prepareCarData();
-        if (!reqData){
+        if (!reqData) {
             return;
         }
-        
+
         const garage = await fetchData("data", `garages/${garageId}`);
         garage.cars.push(reqData);
-        
+
         await fetchData("data", `garages/${garageId}`, "PUT", garage);
         toast.success("Car added successfully");
         navigate(`/garages/${garageId}`);
@@ -112,14 +112,14 @@ export default function GarageCarForm(){
                     <MakeDropdown regField={regField("make")} setData={setData} year={data.year} />
 
                     <ModelDropdown regField={regField("model")} setData={setData} year={data.year} make={data.make} />
-                    
+
                     <TrimDropdown regField={regField("model_id")} year={data.year} make={data.make} model={data.model} />
                 </div>
 
                 <label className="block text-white pt-5">
                     Image
-                    <input 
-                        className="w-full p-3 bg-white/10 text-white rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-1" 
+                    <input
+                        className="w-full p-3 bg-white/10 text-white rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-1"
                         {...regField("imageUrl")}
                     />
 

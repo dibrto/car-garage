@@ -1,10 +1,11 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('http'), require('fs'), require('crypto')) :
-    typeof define === 'function' && define.amd ? define(['http', 'fs', 'crypto'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Server = factory(global.http, global.fs, global.crypto));
-}(this, (function (http, fs, crypto) { 'use strict';
+        typeof define === 'function' && define.amd ? define(['http', 'fs', 'crypto'], factory) :
+            (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Server = factory(global.http, global.fs, global.crypto));
+}(this, (function (http, fs, crypto) {
+    'use strict';
 
-    function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+    function _interopDefaultLegacy(e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
     var http__default = /*#__PURE__*/_interopDefaultLegacy(http);
     var fs__default = /*#__PURE__*/_interopDefaultLegacy(fs);
@@ -13,14 +14,14 @@
     class ServiceError extends Error {
         constructor(message = 'Service Error') {
             super(message);
-            this.name = 'ServiceError'; 
+            this.name = 'ServiceError';
         }
     }
 
     class NotFoundError extends ServiceError {
         constructor(message = 'Resource not found') {
             super(message);
-            this.name = 'NotFoundError'; 
+            this.name = 'NotFoundError';
             this.status = 404;
         }
     }
@@ -28,7 +29,7 @@
     class RequestError extends ServiceError {
         constructor(message = 'Request error') {
             super(message);
-            this.name = 'RequestError'; 
+            this.name = 'RequestError';
             this.status = 400;
         }
     }
@@ -36,7 +37,7 @@
     class ConflictError extends ServiceError {
         constructor(message = 'Resource conflict') {
             super(message);
-            this.name = 'ConflictError'; 
+            this.name = 'ConflictError';
             this.status = 409;
         }
     }
@@ -44,7 +45,7 @@
     class AuthorizationError extends ServiceError {
         constructor(message = 'Unauthorized') {
             super(message);
-            this.name = 'AuthorizationError'; 
+            this.name = 'AuthorizationError';
             this.status = 401;
         }
     }
@@ -52,7 +53,7 @@
     class CredentialError extends ServiceError {
         constructor(message = 'Forbidden') {
             super(message);
-            this.name = 'CredentialError'; 
+            this.name = 'CredentialError';
             this.status = 403;
         }
     }
@@ -557,8 +558,8 @@
             if (query.pageSize) {
                 responseData = responseData.slice(0, pageSize);
             }
-    		
-    		if (query.distinct) {
+
+            if (query.distinct) {
                 const props = query.distinct.split(',').filter(p => p != '');
                 responseData = Object.values(responseData.reduce((distinct, c) => {
                     const key = props.map(p => c[p]).join('::');
@@ -794,7 +795,7 @@
     }
 
     function onRequest(context, tokens, query, body) {
-        Object.entries(body).forEach(([k,v]) => {
+        Object.entries(body).forEach(([k, v]) => {
             console.log(`${k} ${v ? 'enabled' : 'disabled'}`);
             context.util[k] = v;
         });
@@ -932,7 +933,7 @@
          * @param {Object} data Value to store. Shallow merge will be performed!
          * @return {Object} Updated entry.
          */
-         function merge(collection, id, data) {
+        function merge(collection, id, data) {
             if (!collections.has(collection)) {
                 throw new ReferenceError('Collection does not exist: ' + collection);
             }
@@ -1319,26 +1320,26 @@
 
     var identity = "email";
     var protectedData = {
-    	users: {
+        users: {
             "4c8e2d3a-0d76-4a8f-9e2f-8d4c6680b4c1": {
                 email: "daniel.bratov@gmail.com",
-    			hashedPassword: "f28055e298a10032da94713a421f2f73934ec9b936ceece2064b40fd8572cc06",
+                hashedPassword: "f28055e298a10032da94713a421f2f73934ec9b936ceece2064b40fd8572cc06",
             },
-    		"35c62d76-8152-4626-8712-eeb96381bea8": {
-    			email: "peter@abv.bg",    			
-    			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
-    		},
-    		"847ec027-f659-4086-8032-5173e2f9c93a": {
-    			email: "george@abv.bg",
-    			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
-    		},
-    		"60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
-    			email: "admin@abv.bg",    			
-    			hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302",
-    		}
-    	},
-    	sessions: {
-    	}
+            "35c62d76-8152-4626-8712-eeb96381bea8": {
+                email: "peter@abv.bg",
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+            },
+            "847ec027-f659-4086-8032-5173e2f9c93a": {
+                email: "george@abv.bg",
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+            },
+            "60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
+                email: "admin@abv.bg",
+                hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302",
+            }
+        },
+        sessions: {
+        }
     };
     var seedData = {
         garages: {
@@ -1351,35 +1352,25 @@
                 profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
                 cars: [
                     {
-                        "model_id": "73955",
+                        "model_id": "12299",
                         "model_imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Audi_A8_D5_%282021%29_1X7A6342.jpg",
                         "model_make_id": "Audi",
-                        "model_name": "A8",
-                        "model_trim": "3.0T quattro 4dr Sedan AWD (3.0L 6cyl S/C 8A)",
-                        "model_year": "2019",
+                        "model_name": "A8 Quattro",
+                        "model_trim": "L 3.0T quattro 4dr Sedan AWD (3.0L 6cyl S/C 8A)",
+                        "model_year": "2018",
                         "make_display": "Audi",
                         "make_country": "Germany"
-                    },                    
-                    {
-                        "model_id": "82782",
-                        "model_imageUrl": "https://www.edmunds.com/assets/m/dodge/challenger/2021/oem/2021_dodge_challenger_coupe_rt-scat-pack-widebody_fq_oem_1_600.jpg",
-                        "model_year": "2022",
-                        "model_make_id": "Dodge",
-                        "model_name": "Challenger",
-                        "model_trim": "SRT 392 2dr Coupe (6.4L 8cyl 6M)",
-                        "make_display": "Dodge",
-                        "make_country": "USA"
                     },
                     {
-                        "model_id": "39281",
-                        "model_imageUrl": "https://img.autoabc.lv/Toyota-Auris/Toyota-Auris_2007_Hecbeks_15119125336_7.jpg",
-                        "model_make_id": "toyota",
-                        "model_name": "Auris",
-                        "model_trim": "2.0 D-4D",
-                        "model_year": "2008",
-                        "make_display": "Toyota",
-                        "make_country": "Japan"
-                    }                        
+                        "model_id": "6936",
+                        "model_imageUrl": "https://www.edmunds.com/assets/m/dodge/challenger/2021/oem/2021_dodge_challenger_coupe_rt-scat-pack-widebody_fq_oem_1_600.jpg",
+                        "model_year": "2020",
+                        "model_make_id": "Dodge",
+                        "model_name": "Challenger",
+                        "model_trim": "SRT Hellcat 2dr Coupe (6.2L 8cyl S/C 6M)",
+                        "make_display": "Dodge",
+                        "make_country": "USA"
+                    }
                 ]
             },
             "b1f47e3c-9fb8-4b5c-9c92-1db9b2f4f6ad": {
@@ -1391,12 +1382,12 @@
                 profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
                 cars: [
                     {
-                        "model_id": "11459",
-                        "model_imageUrl": "https://www.jeffdambrosiochryslerjeepdodge.com/blogs/3502/wp-content/uploads/2024/07/dodge-viper.jpg",
+                        "model_id": "12899",
+                        "model_imageUrl": "https://d18zm77o7qzu1y.cloudfront.net/uploads/files/000/011/843/original/2017-charger-gallery-07.jpg.image.2880.jpg?1512682633",
                         "model_make_id": "Dodge",
-                        "model_name": "Viper",
-                        "model_trim": "SRT-10",
-                        "model_year": "2009",
+                        "model_name": "Charger",
+                        "model_trim": "R/T 4dr Sedan (5.7L 8cyl 8A)",
+                        "model_year": "2018",
                         "make_display": "Dodge",
                         "make_country": "USA"
                     }
@@ -1411,44 +1402,34 @@
                 profilePicture: "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
                 cars: [
                     {
-                        "model_id": "11459",
-                        "model_imageUrl": "https://www.jeffdambrosiochryslerjeepdodge.com/blogs/3502/wp-content/uploads/2024/07/dodge-viper.jpg",
-                        "model_make_id": "Dodge",
-                        "model_name": "Viper",
-                        "model_trim": "SRT-10",
-                        "model_year": "2009",
-                        "make_display": "Dodge",
+                        "model_id": "22070",
+                        "model_imageUrl": "https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/wp-content/uploads/2015/03/2015-Ford-Focus-Titanium-107.jpg",
+                        "model_make_id": "Ford",
+                        "model_name": "Focus",
+                        "model_trim": "S 4dr Sedan (2.0L 4cyl 5M)",
+                        "model_year": "2015",
+                        "make_display": "Ford",
                         "make_country": "USA"
-                    },
-                    {
-                        "model_id": "58698",
-                        "model_imageUrl": "https://platform.cstatic-images.com/xxlarge/in/v2/stock_photos/b5ed207f-ea2f-47fb-8166-cd47f33e5df9/4d820403-a002-4ce7-9fab-e8707a328571.png",
-                        "model_make_id": "ferrari",
-                        "model_name": "458",
-                        "model_trim": "Italia",
-                        "model_year": "2013",
-                        "make_display": "Ferrari",
-                        "make_country": "Italy"
                     }
                 ]
             }
         }
     };
     var rules$1 = {
-    	users: {
-    		".create": false,
-    		".read": [
-    			"Owner"
-    		],
-    		".update": false,
-    		".delete": false
-    	},
+        users: {
+            ".create": false,
+            ".read": [
+                "Owner"
+            ],
+            ".update": false,
+            ".delete": false
+        },
     };
     var settings = {
-    	identity: identity,
-    	protectedData: protectedData,
-    	seedData: seedData,
-    	rules: rules$1
+        identity: identity,
+        protectedData: protectedData,
+        seedData: seedData,
+        rules: rules$1
     };
 
     const plugins = [
