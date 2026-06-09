@@ -17,4 +17,18 @@ carApiController.get("/models", async (req, res) => {
     res.json(data);
 });
 
+carApiController.get("/trims", async (req, res) => {
+    const { year, make, model } = req.query;
+    const response = await fetch(`https://carapi.app/api/trims/v2?year=${year}&make=${make}&model=${model}`);
+    const data = await response.json();
+    res.json(data);
+});
+
+carApiController.get("/car-info", async (req, res) => {
+    const { id } = req.query;
+    const response = await fetch(`https://carapi.app/api/trims/v2/${id}`);
+    const data = await response.json();
+    res.json(data);
+});
+
 export default carApiController;
