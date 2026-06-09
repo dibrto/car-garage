@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 
-export default function MakeDropdown({ regField, setData, year }){
+export default function MakeDropdown({ regField, setData, year }) {
     const { fetchData } = useFetch();
     const [makes, setMakes] = useState([]);
 
-    useEffect(() => {        
+    useEffect(() => {
         if (!year) {
             setMakes([]);
             return;
         }
 
-        fetchData("carQuery", `makes?year=${year}`)
-            .then(response => setMakes(response.Makes));
+        fetchData("carApi", `makes?year=${year}`)
+            .then(response => setMakes(response.data));
 
     }, [year, fetchData]);
 
@@ -26,9 +26,9 @@ export default function MakeDropdown({ regField, setData, year }){
     };
 
     return (
-         <div>
+        <div>
             <div className="block text-white mb-1">Make <span className="text-red-500">*</span></div>
-            <select                
+            <select
                 {...regField}
                 onChange={onMakeChange}
                 className="w-full p-3 bg-white/10 text-white rounded-xl 
@@ -36,7 +36,7 @@ export default function MakeDropdown({ regField, setData, year }){
                             focus:ring-2 focus:ring-blue-500"
             >
                 <option value="" className="text-black">---</option>
-                { makes.map(make => <option key={make.make || make.make_id} value={make.make} className="text-black" >{make.make_display}</option>) }
+                {makes.map(make => <option key={make.id} value={make.name} className="text-black" >{make.name}</option>)}
             </select>
         </div>
     );

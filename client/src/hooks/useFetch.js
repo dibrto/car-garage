@@ -7,9 +7,10 @@ const apis = {
     auth: import.meta.env.VITE_API_AUTH_URL
     , data: import.meta.env.VITE_API_DATA_URL
     , carQuery: import.meta.env.VITE_API_CAR_QUERY_URL
+    , carApi: import.meta.env.VITE_API_CAR_API_URL
 };
 
-export default function useFetch(api, endPoint, initialState){
+export default function useFetch(api, endPoint, initialState) {
     const [data, setData] = useState(initialState);
     const { isAuthenticated, user } = useUser();
     const initialStateRef = useRef(initialState);
@@ -23,7 +24,7 @@ export default function useFetch(api, endPoint, initialState){
 
         let options = { headers: {} };
 
-        if (abortControllerRef.current){
+        if (abortControllerRef.current) {
             options.signal = abortControllerRef.current.signal;
         }
 
@@ -33,18 +34,18 @@ export default function useFetch(api, endPoint, initialState){
 
         if (body) {
             // body appended token for auth requests
-            if (body.accessToken){
+            if (body.accessToken) {
                 options.headers["X-Authorization"] = body.accessToken;
                 delete body.accessToken;
             }
 
-            if (Object.keys(body).length !== 0){
+            if (Object.keys(body).length !== 0) {
                 options.headers["Content-Type"] = "application/json";
                 options.body = JSON.stringify(body);
             }
         }
 
-        if (isAuthenticated){
+        if (isAuthenticated) {
             options.headers["X-Authorization"] = user.accessToken;
             options.headers["X-Admin"] = true; // for followers feat
         }
@@ -52,13 +53,13 @@ export default function useFetch(api, endPoint, initialState){
         try {
             const response = await fetch(fetchUrl, options);
 
-            if (!response.ok){
+            if (!response.ok) {
                 throw await response.json();
             }
 
             return response.json();
         }
-        catch(err) {
+        catch (err) {
             if (err.name === 'AbortError') {
                 return initialStateRef.current;
             }
@@ -79,7 +80,7 @@ export default function useFetch(api, endPoint, initialState){
         abortControllerRef.current = abortController;
 
         fetchData(api, endPoint)
-            .then(result =>setData(result));
+            .then(result => setData(result));
 
         return () => abortController.abort();
     }, [api, endPoint, fetchData]);
